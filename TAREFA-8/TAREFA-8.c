@@ -64,7 +64,7 @@ int main()
     pwm_init_buzzer(BUZZER_PIN);
     while (true)
     {
-        int A_state = !gpio_get(ENTRADA);
+        int A_state = gpio_get(ENTRADA);
         if (A_state)
         {
             gpio_put(LED_R_PIN, 1);
