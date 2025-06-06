@@ -128,6 +128,6 @@ int main()
         }
 
         btn_anterior = btn_atual;
-        sleep_ms(500);
+        sleep_ms(100);
     }
 }
