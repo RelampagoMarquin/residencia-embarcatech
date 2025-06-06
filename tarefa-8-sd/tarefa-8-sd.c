@@ -17,14 +17,40 @@
 
 // botoões
 #define BTN_B_PIN 6
-volatile bool a_state = false; // Botao sw está pressionado?
+volatile bool a_state = false;
 
 // variavel do valor
-volatile uint8_t value = 0;
+volatile int16_t value = 0;
 
-#define LOAD_PIN 28 // Pino de LOAD (SH/LD)
-#define CLK_PIN 17  // Pino de CLOCK
-#define DATA_PIN 16 // Pino de saída serial (Qh)
+#define LOAD_PIN 9  // Pino de LOAD (SH/LD)
+#define CLK_PIN 19  // Pino de CLOCK
+#define DATA_PIN 18 // Pino de saída serial (Qh)
+
+// Fução de exibir no display
+void display_value()
+{
+    struct render_area frame_area = {0, ssd1306_width - 1, 0, ssd1306_n_pages - 1};
+    calculate_render_area_buffer_length(&frame_area);
+    uint8_t ssd[ssd1306_buffer_length];
+    memset(ssd, 0, ssd1306_buffer_length);
+
+    char buf[16];
+    sprintf(buf, "Valor: %u", value);
+
+    ssd1306_draw_string(ssd, 0, 0, buf); // Corrigido para (0,0)
+    render_on_display(ssd, &frame_area);
+}
+
+void display_wait()
+{
+    struct render_area frame_area = {0, ssd1306_width - 1, 0, ssd1306_n_pages - 1};
+    calculate_render_area_buffer_length(&frame_area);
+    uint8_t ssd[ssd1306_buffer_length];
+    memset(ssd, 0, ssd1306_buffer_length);
+
+    ssd1306_draw_string(ssd, 0, 0, "Alterando..."); // Corrigido para (0,0)
+    render_on_display(ssd, &frame_area);
+}
 
 // função de inicializar o OLED
 void init_oled()
@@ -63,43 +89,30 @@ void setup_botoes()
 }
 
 // Fução de exibir no display
-void display_value(uint8_t val)
+void read_dip_value()
 {
-    struct render_area frame_area = {0, ssd1306_width - 1, 0, ssd1306_n_pages - 1};
-    calculate_render_area_buffer_length(&frame_area);
-    uint8_t ssd[ssd1306_buffer_length];
-    memset(ssd, 0, ssd1306_buffer_length);
+    display_wait();
+    value = 0;
 
-    char buf[16];
-    sprintf(buf, "Valor: %u", val);
-
-    ssd1306_draw_string(ssd, 0, 0, buf); // Corrigido para (0,0)
-    render_on_display(ssd, &frame_area);
-}
-
-// Função de ler os valores
-uint8_t read_dip_value()
-{
-    uint8_t result = 0;
-
-    // Ativa leitura paralela (LOAD baixo)
     gpio_put(LOAD_PIN, 0);
-    sleep_us(5); // pulso rápido
+    sleep_ms(50);
+    gpio_put(CLK_PIN, 1);
+    sleep_ms(50);
+    gpio_put(CLK_PIN, 0);
+    sleep_ms(50);
     gpio_put(LOAD_PIN, 1);
+    sleep_ms(10);
 
-    // Lê 8 bits, LSB primeiro (chave 8 → 1º bit)
     for (int i = 0; i < 8; i++)
     {
-        result |= (gpio_get(DATA_PIN) << i);
+        uint bit_lido = gpio_get(DATA_PIN) & 0x01; // Garante que será só 0 ou 1
+        value = value + (bit_lido << i);           // Soma bit na posição correta
 
-        // Pulso de clock
-        gpio_put(CLK_PIN, 1);
-        sleep_us(2);
+        gpio_put(CLK_PIN, 1); // Pulso de clock
+        sleep_ms(10);
         gpio_put(CLK_PIN, 0);
-        sleep_us(2);
+        sleep_ms(10);
     }
-
-    return result;
 }
 
 int main()
@@ -110,7 +123,9 @@ int main()
     setup_botoes();
 
     bool btn_anterior = true;
-    display_value(0);
+    read_dip_value();
+    value = 0;
+    display_value();
 
     while (true)
     {
@@ -122,8 +137,8 @@ int main()
             sleep_ms(10); // debounce
             if (!gpio_get(BTN_B_PIN))
             {
-                value = read_dip_value();
-                display_value(value);
+                read_dip_value(); // usa variável global
+                display_value();  // exibe valor atualizado
             }
         }
 
