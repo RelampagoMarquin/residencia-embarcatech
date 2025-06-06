@@ -11,9 +11,6 @@
 #include "hardware/pwm.h"
 #include "hardware/clocks.h"
 
-// Definição do número de LEDs e pino.
-#define LED_COUNT 25
-
 // Definição do I2C para o display OLED
 #define I2C_SDA 14
 #define I2C_SCL 15
@@ -32,13 +29,13 @@ volatile uint8_t value = 0;
 // função de inicializar o OLED
 void init_oled()
 {
-    stdio_init_all();
     i2c_init(i2c1, ssd1306_i2c_clock * 1000);
     gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
     gpio_set_function(I2C_SCL, GPIO_FUNC_I2C);
     gpio_pull_up(I2C_SDA);
     gpio_pull_up(I2C_SCL);
     ssd1306_init();
+    sleep_ms(100); // Aguarda após inicializar
 }
 
 // Função de habilitar as GPIO do CI
@@ -76,7 +73,7 @@ void display_value(uint8_t val)
     char buf[16];
     sprintf(buf, "Valor: %u", val);
 
-    ssd1306_draw_string(ssd, 128, 0, buf);
+    ssd1306_draw_string(ssd, 0, 0, buf); // Corrigido para (0,0)
     render_on_display(ssd, &frame_area);
 }
 
@@ -113,6 +110,7 @@ int main()
     setup_botoes();
 
     bool btn_anterior = true;
+    display_value(0);
 
     while (true)
     {
