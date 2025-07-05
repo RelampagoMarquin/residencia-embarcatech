@@ -45,11 +45,14 @@ void init_oled() {
 
 // === LEITURA DO SENSOR DE TEMPERATURA INTERNA ===
 float read_onboard_temperature() {
-    const float conversion_factor = 3.3f / (1 << 12); // 12-bit ADC
-    adc_select_input(4); // Canal 4 = temperatura interna
+    adc_select_input(4);
     uint16_t raw = adc_read();
-    float voltage = raw * conversion_factor;
-    return 27.0f - (voltage - 0.706f) / 0.001721f;
+    float voltage = raw * (3.3f / 4096);
+
+    // Fórmula calibrada para sua placa
+    float temperature = 87.0f - (voltage * 100.0f);
+    
+    return temperature;
 }
 
 // === LEITURA DO JOYSTICK ===
@@ -101,43 +104,51 @@ void vBlinkTask(void *pvParameters) {
 
 // === TASK DE SENSOR DE TEMPERATURA ===
 void vSensorTask(void *pvParameters) {
-    static DisplayData lastData = {0, "REPOUSO"};
     for (;;) {
-        lastData.temperatura = read_onboard_temperature();
-        xQueueOverwrite(displayQueue, &lastData);
+        float temp = read_onboard_temperature();
+
+        DisplayData current;
+        if (xQueuePeek(displayQueue, &current, pdMS_TO_TICKS(50)) == pdTRUE) {
+            current.temperatura = temp;
+            xQueueOverwrite(displayQueue, &current);
+        }
+
         vTaskDelay(pdMS_TO_TICKS(2000));
     }
 }
 
 // === TASK DE JOYSTICK ===
 void vJoystickTask(void *pvParameters) {
-    static DisplayData lastData = {0, "REPOUSO"};
     for (;;) {
         uint16_t vrx = 0, vry = 0;
         joystick_read_axis(&vrx, &vry);
 
+        char nova_direcao[16] = "REPOUSO";
         if (vry > 3500)
-            strcpy(lastData.direcao, "CIMA");
+            strcpy(nova_direcao, "CIMA");
         else if (vry < 500)
-            strcpy(lastData.direcao, "BAIXO");
-        else if (vrx > 3500)
-            strcpy(lastData.direcao, "DIREITA");
+            strcpy(nova_direcao, "BAIXO");
         else if (vrx < 500)
-            strcpy(lastData.direcao, "ESQUERDA");
-        else
-            strcpy(lastData.direcao, "REPOUSO");
+            strcpy(nova_direcao, "ESQUEDA");
+        else if (vrx > 3500)
+            strcpy(nova_direcao, "DIREITA");
 
-        xQueueOverwrite(displayQueue, &lastData);
+        DisplayData current;
+        if (xQueuePeek(displayQueue, &current, pdMS_TO_TICKS(50)) == pdTRUE) {
+            strcpy(current.direcao, nova_direcao);
+            xQueueOverwrite(displayQueue, &current);
+        }
+
         vTaskDelay(pdMS_TO_TICKS(200));
     }
 }
 
 // === TASK DE DISPLAY OLED ===
 void vDisplayTask(void *pvParameters) {
-    DisplayData received;
+    DisplayData data;
     for (;;) {
-        if (xQueuePeek(displayQueue, &received, portMAX_DELAY) == pdTRUE) {
-            display_menu(received);
+        if (xQueuePeek(displayQueue, &data, portMAX_DELAY) == pdTRUE) {
+            display_menu(data);
         }
         vTaskDelay(pdMS_TO_TICKS(500));
     }
@@ -163,6 +174,10 @@ int main() {
         printf("Erro ao criar fila!\n");
         while (1);
     }
+
+    // Inicializa valor inicial na fila
+    DisplayData initial = {0, "REPOUSO"};
+    xQueueSend(displayQueue, &initial, portMAX_DELAY);
 
     xTaskCreate(vBlinkTask, "Blink", 128, NULL, 1, NULL);
     xTaskCreate(vSensorTask, "Sensor", 256, NULL, 1, NULL);
