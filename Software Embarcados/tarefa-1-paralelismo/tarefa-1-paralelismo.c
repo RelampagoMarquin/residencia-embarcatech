@@ -45,13 +45,12 @@ void init_oled() {
 
 // === LEITURA DO SENSOR DE TEMPERATURA INTERNA ===
 float read_onboard_temperature() {
+    const float conversion_factor = 3.3f / (1 << 12);
     adc_select_input(4);
-    uint16_t raw = adc_read();
-    float voltage = raw * (3.3f / 4096);
 
-    // Fórmula calibrada para sua placa
-    float temperature = 87.0f - (voltage * 100.0f);
-    
+    uint16_t raw = adc_read();
+    float voltage = raw * conversion_factor;
+    float temperature = 27.0f - (voltage - 0.706f) / 0.001721f;
     return temperature;
 }
 
@@ -83,7 +82,7 @@ void display_menu(DisplayData data) {
     memset(buffer, 0, sizeof(buffer));
 
     char linha1[32], linha2[32];
-    snprintf(linha1, sizeof(linha1), "Temp: %.1f C", data.temperatura);
+    snprintf(linha1, sizeof(linha1), "Temp: %.1f °C", data.temperatura);
     snprintf(linha2, sizeof(linha2), "Direcao: %s", data.direcao);
 
     ssd1306_draw_string(buffer, 0, 8, linha1);   // Linha superior
@@ -168,6 +167,9 @@ void setup(void) {
 // === MAIN ===
 int main() {
     setup();
+
+    //seta como true a leitura do sensor
+    adc_set_temp_sensor_enabled(true);
 
     displayQueue = xQueueCreate(1, sizeof(DisplayData));
     if (displayQueue == NULL) {
