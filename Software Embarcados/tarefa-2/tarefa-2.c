@@ -8,13 +8,15 @@
 #include "inc/ssd1306.h"
 #include <stdio.h>
 #include <string.h>
+#include "mqtt_handler/mqtt_handler.h"
+
 
 // === DEFINIÇÕES DE PINOS ===
 
 // === ANALOGICO ===
 #define VRX 26
 #define VRY 27
-#define SW  22
+#define SW 22
 
 // === DISPLAY ===
 #define I2C_SDA 14
@@ -23,33 +25,19 @@
 // === LED
 #define LED_PIN 12
 
-// // === DEFINIÇÕES MQTT ===
-// #define MQTT_BROKER_HOST "mqtt.iot.natal.br"
-// #define MQTT_PORT 1883
-
-// // === ALTENTICACAO ===
-// #define MQTT_USER "desafio15" 
-// #define MQTT_PASS "desafio15.laica"
-
-// // === CANAIS DO MQTT ===
-// #define MQTT_TOPIC_TEMP "ha/desafio15/marcos.silva/temp"
-// #define MQTT_TOPIC_JOY  "ha/desafio15/marcos.silva/joy"
-
-
 // === DEFINIÇÃO DE STRUCT ===
-typedef struct {
+typedef struct
+{
     float temperatura;
     char direcao[16]; // Ex: "CIMA", "BAIXO", etc.
 } DisplayData;
 
 // === FILAS ===
 QueueHandle_t displayQueue; // Fila para o display
-QueueHandle_t temperatureMqttQueue; // fila para enviar temperatura para o MQTT
-QueueHandle_t joystickMqttQueue;   // fila para enviar direção do joystick para o MQTT
-
 
 // === INIT OLED ===
-void init_oled() {
+void init_oled()
+{
     stdio_init_all();
     i2c_init(i2c1, ssd1306_i2c_clock * 1000);
     gpio_set_function(I2C_SDA, GPIO_FUNC_I2C);
@@ -60,7 +48,8 @@ void init_oled() {
 }
 
 // === LEITURA DO SENSOR DE TEMPERATURA INTERNA ===
-float read_onboard_temperature() {
+float read_onboard_temperature()
+{
     const float conversion_factor = 3.3f / (1 << 12);
     adc_select_input(4);
 
@@ -71,7 +60,8 @@ float read_onboard_temperature() {
 }
 
 // === LEITURA DO JOYSTICK ===
-void setup_joystick() {
+void setup_joystick()
+{
     adc_init();
     adc_gpio_init(VRY); // canal 0
     adc_gpio_init(VRX); // canal 1
@@ -80,7 +70,8 @@ void setup_joystick() {
     gpio_pull_up(SW);
 }
 
-void joystick_read_axis(uint16_t *vrx, uint16_t *vry) {
+void joystick_read_axis(uint16_t *vrx, uint16_t *vry)
+{
     adc_select_input(0); // VRY (Y)
     sleep_us(2);
     *vry = adc_read();
@@ -91,7 +82,8 @@ void joystick_read_axis(uint16_t *vrx, uint16_t *vry) {
 }
 
 // === DISPLAY MENU ===
-void display_menu(DisplayData data) {
+void display_menu(DisplayData data)
+{
     struct render_area area = {0, ssd1306_width - 1, 0, ssd1306_n_pages - 1};
     calculate_render_area_buffer_length(&area);
     uint8_t buffer[ssd1306_buffer_length];
@@ -101,15 +93,17 @@ void display_menu(DisplayData data) {
     snprintf(linha1, sizeof(linha1), "Temp: %.1f °C", data.temperatura);
     snprintf(linha2, sizeof(linha2), "Direcao: %s", data.direcao);
 
-    ssd1306_draw_string(buffer, 0, 8, linha1);   // Linha superior
-    ssd1306_draw_string(buffer, 0, 24, linha2);  // Linha inferior
+    ssd1306_draw_string(buffer, 0, 8, linha1);  // Linha superior
+    ssd1306_draw_string(buffer, 0, 24, linha2); // Linha inferior
 
     render_on_display(buffer, &area);
 }
 
 // === TASK DO LED ===
-void vBlinkTask(void *pvParameters) {
-    for (;;) {
+void vBlinkTask(void *pvParameters)
+{
+    for (;;)
+    {
         gpio_put(LED_PIN, 1);
         vTaskDelay(pdMS_TO_TICKS(50));
         gpio_put(LED_PIN, 0);
@@ -118,21 +112,22 @@ void vBlinkTask(void *pvParameters) {
 }
 
 // === TASK DE SENSOR DE TEMPERATURA ===
-void vSensorTask(void *pvParameters) {
-    for (;;) {
+void vSensorTask(void *pvParameters)
+{
+    for (;;)
+    {
         vTaskDelay(pdMS_TO_TICKS(30000)); // Publicação a cada 30 segundos
 
         float temp_float = read_onboard_temperature();
         int temp_int = (int)temp_float; // Valor para o MQTT
 
         // 1. Envia o inteiro para a fila do MQTT
-        if (temperatureMqttQueue != NULL) {
-            xQueueSend(temperatureMqttQueue, &temp_int, 0);
-        }
+        mqtt_handler_publish_temperature(temp_int);
 
         // 2. Atualiza a struct na fila do Display (lógica que você já tinha)
         DisplayData current_display_data;
-        if (xQueuePeek(displayQueue, &current_display_data, 0) == pdTRUE) {
+        if (xQueuePeek(displayQueue, &current_display_data, 0) == pdTRUE)
+        {
             current_display_data.temperatura = temp_float; // Display pode ter float
             xQueueOverwrite(displayQueue, &current_display_data);
         }
@@ -140,48 +135,61 @@ void vSensorTask(void *pvParameters) {
 }
 
 // === TASK DE JOYSTICK ===
-void vJoystickTask(void *pvParameters) {
-    char ultima_direcao_enviada[16] = ""; 
-    
-    for (;;) {
+void vJoystickTask(void *pvParameters)
+{
+    char ultima_direcao_enviada[16] = "";
+
+    for (;;)
+    {
         uint16_t vrx = 0, vry = 0;
         joystick_read_axis(&vrx, &vry);
 
         char direcao_atual[16] = "";
-        if (vry > 3500) strcpy(direcao_atual, "cima");
-        else if (vry < 500) strcpy(direcao_atual, "baixo");
-        else if (vrx < 500) strcpy(direcao_atual, "esquerda");
-        else if (vrx > 3500) strcpy(direcao_atual, "direita");
+        if (vry > 3500)
+            strcpy(direcao_atual, "cima");
+        else if (vry < 500)
+            strcpy(direcao_atual, "baixo");
+        else if (vrx < 500)
+            strcpy(direcao_atual, "esquerda");
+        else if (vrx > 3500)
+            strcpy(direcao_atual, "direita");
 
-        if (strcmp(direcao_atual, ultima_direcao_enviada) != 0 && strlen(direcao_atual) > 0) {
-            // 1. Envia a string para a fila do MQTT
-            if (joystickMqttQueue != NULL) {
-                xQueueSend(joystickMqttQueue, &direcao_atual, 0);
+        if (strcmp(direcao_atual, ultima_direcao_enviada) != 0 && strlen(direcao_atual) > 0)
+        {
+            // 1. Se a direção for válida, envia para a biblioteca MQTT
+            if (strcmp(direcao_atual, "REPOUSO") != 0)
+            {
+                mqtt_handler_publish_joystick(direcao_atual);
             }
 
             // 2. Atualiza a struct na fila do Display
             DisplayData current_display_data;
-            if (xQueuePeek(displayQueue, &current_display_data, 0) == pdTRUE) {
+            if (xQueuePeek(displayQueue, &current_display_data, 0) == pdTRUE)
+            {
                 strcpy(current_display_data.direcao, direcao_atual);
                 xQueueOverwrite(displayQueue, &current_display_data);
             }
-            
+
             strcpy(ultima_direcao_enviada, direcao_atual);
         }
-        
-        if (strlen(direcao_atual) == 0) {
+
+        if (strlen(direcao_atual) == 0)
+        {
             strcpy(ultima_direcao_enviada, "");
         }
-        
+
         vTaskDelay(pdMS_TO_TICKS(100));
     }
 }
 
 // === TASK DE DISPLAY OLED ===
-void vDisplayTask(void *pvParameters) {
+void vDisplayTask(void *pvParameters)
+{
     DisplayData data;
-    for (;;) {
-        if (xQueuePeek(displayQueue, &data, portMAX_DELAY) == pdTRUE) {
+    for (;;)
+    {
+        if (xQueuePeek(displayQueue, &data, portMAX_DELAY) == pdTRUE)
+        {
             display_menu(data);
         }
         vTaskDelay(pdMS_TO_TICKS(500));
@@ -189,7 +197,8 @@ void vDisplayTask(void *pvParameters) {
 }
 
 // === SETUP INICIAL ===
-void setup(void) {
+void setup(void)
+{
     stdio_init_all();
     adc_init();
     adc_set_temp_sensor_enabled(true);
@@ -200,27 +209,39 @@ void setup(void) {
 }
 
 // === MAIN ===
-int main() {
+int main()
+{
+    // 1. Inicializa todo o hardware básico de uma só vez.
     setup();
 
-    //seta como true a leitura do sensor
-    adc_set_temp_sensor_enabled(true);
-
+    // 2. Cria a fila para o display (isso continua aqui, pois pertence a este arquivo).
     displayQueue = xQueueCreate(1, sizeof(DisplayData));
     if (displayQueue == NULL) {
-        printf("Erro ao criar fila!\n");
-        while (1);
+        // Tratar erro de criação de fila, se necessário
     }
+    DisplayData initial = {0.0, "INICIANDO..."};
+    xQueueSend(displayQueue, &initial, 0);
 
-    // Inicializa valor inicial na fila
-    DisplayData initial = {0, "REPOUSO"};
-    xQueueSend(displayQueue, &initial, portMAX_DELAY);
+    // =================================================================
+    //         NOVA FORMA DE INICIAR O MQTT E O WI-FI
+    // =================================================================
+    // REMOVIDO: O bloco inteiro que calculava 'width', 'n_pages' e chamava 'mqtt_handler_start(...)'.
+    
+    // NOVO: Uma única chamada que inicializa tudo que é relacionado a MQTT.
+    // Ela vai criar as filas 'temperatureMqttQueue' e 'joystickMqttQueue',
+    // e também as tarefas para conectar ao Wi-Fi/Broker e para publicar os dados.
+    mqtt_handler_init();
+    // =================================================================
 
-    xTaskCreate(vBlinkTask, "Blink", 128, NULL, 1, NULL);
+
+    // 3. Criação das Tarefas da sua Aplicação (isso não muda).
     xTaskCreate(vSensorTask, "Sensor", 256, NULL, 1, NULL);
     xTaskCreate(vJoystickTask, "Joystick", 256, NULL, 1, NULL);
     xTaskCreate(vDisplayTask, "Display", 512, NULL, 2, NULL);
 
+    // 4. Inicia o escalonador do FreeRTOS (isso não muda).
     vTaskStartScheduler();
+
+    // O código nunca deve chegar aqui.
     while (1);
 }
