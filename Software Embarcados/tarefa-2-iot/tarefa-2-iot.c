@@ -29,8 +29,8 @@
 // ===================================================================
 // CONFIGURAÇÕES ADICIONADAS PARA WI-FI E MQTT
 // ===================================================================
-#define WIFI_SSID "COLOQUE O NOME DA SUA REDE"
-#define WIFI_PASSWORD "SENHA DO SEU WIFI"
+#define WIFI_SSID "tarefa-mqtt"
+#define WIFI_PASSWORD "laica@2025"
 #define MQTT_SERVER "mqtt.iot.natal.br"
 #define MQTT_PORT_CUSTOM 1883
 #define MQTT_USER "desafio15"
@@ -331,5 +331,6 @@ int main()
     // Inicia o escalonador do FreeRTOS
     vTaskStartScheduler();
 
-    while (1);
+    while (1)
+        ;
 }
