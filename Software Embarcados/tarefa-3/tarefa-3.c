@@ -29,8 +29,8 @@
 #define MQTT_TOPIC "ha/desafio" DESAFIO_NUM "/" SEU_NOME "/mpu6050"
 
 // === PINOS (sem alterações) ===
-#define I2C0_SDA 4
-#define I2C0_SCL 5
+#define I2C0_SDA 0
+#define I2C0_SCL 1
 #define I2C1_SDA 14
 #define I2C1_SCL 15
 #define LED_PIN 11
@@ -55,13 +55,13 @@ void display_message(const char *line1, const char *line2, const char *line3, co
     uint8_t buffer[ssd1306_buffer_length];
     memset(buffer, 0, sizeof(buffer));
     if (line1)
-        ssd1306_draw_string(buffer, 0, 0, line1);
+        ssd1306_draw_string(buffer, 0, 0, (char *)line1);
     if (line2)
-        ssd1306_draw_string(buffer, 0, 16, line2);
+        ssd1306_draw_string(buffer, 0, 16, (char *)line2);
     if (line3)
-        ssd1306_draw_string(buffer, 0, 32, line3);
+        ssd1306_draw_string(buffer, 0, 32, (char *)line3);
     if (line4)
-        ssd1306_draw_string(buffer, 0, 48, line4);
+        ssd1306_draw_string(buffer, 0, 48, (char *)line4);
     render_on_display(buffer, &area);
 }
 
@@ -217,62 +217,6 @@ void vMpuSensorTask(void *pvParameters)
     }
 }
 
-void i2c_scan_display(i2c_inst_t *i2c)
-{
-    char linha1[21] = "I2C Scan:";
-    char linha2[21] = "";
-    char linha3[21] = "";
-    char linha4[21] = "";
-
-    bool found = false;
-    int count = 0;
-
-    for (uint8_t addr = 1; addr < 127; addr++)
-    {
-        uint8_t rxdata;
-        int ret = i2c_read_blocking(i2c, addr, &rxdata, 1, false);
-        if (ret >= 0)
-        {
-            found = true;
-            // Mostra até 3 endereços encontrados (2 por linha)
-            if (count == 0)
-            {
-                snprintf(linha2, sizeof(linha2), "0x%02X", addr);
-            }
-            else if (count == 1)
-            {
-                snprintf(linha2 + strlen(linha2), sizeof(linha2) - strlen(linha2), " 0x%02X", addr);
-            }
-            else if (count == 2)
-            {
-                snprintf(linha3, sizeof(linha3), "0x%02X", addr);
-            }
-            else if (count == 3)
-            {
-                snprintf(linha3 + strlen(linha3), sizeof(linha3) - strlen(linha3), " 0x%02X", addr);
-            }
-            else if (count == 4)
-            {
-                snprintf(linha4, sizeof(linha4), "0x%02X", addr);
-            }
-            else if (count == 5)
-            {
-                snprintf(linha4 + strlen(linha4), sizeof(linha4) - strlen(linha4), " 0x%02X", addr);
-            }
-            count++;
-        }
-    }
-
-    if (!found)
-    {
-        display_message("I2C Scan:", "Nenhum disp.", NULL, NULL);
-    }
-    else
-    {
-        display_message(linha1, linha2, linha3, linha4);
-    }
-}
-
 // === MAIN (sem alterações) ===
 int main()
 {
@@ -292,7 +236,6 @@ int main()
     display_message("Hardware OK", "WiFi OK", "Conectando MQTT", ip4addr_ntoa(netif_ip4_addr(netif_default)));
     dns_gethostbyname(MQTT_SERVER, &mqtt_server_ip, dns_found_cb, NULL);
 
-    i2c_scan_display(i2c0);
 
     // Dá um tempinho para você ver no display
     sleep_ms(3000);
