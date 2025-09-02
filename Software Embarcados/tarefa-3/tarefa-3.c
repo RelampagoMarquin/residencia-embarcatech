@@ -41,14 +41,16 @@
 QueueHandle_t displayQueue;
 typedef struct
 {
-    float ax, ay, gz, temp;
+    float ax, ay, az;
+    float gx, gy, gz;
+    float temp;
 } DisplayData;
 
 //=== NTP =====
 
 #define NTP_SERVER "pool.ntp.br" // Melhor usar o pool brasileiro
 #define NTP_TIMEOUT_MS 5000
-#define NTP_RESYNC_INTERVAL_MS 3600000 // Ressincronizar a cada 1 hora (3600 * 1000)
+#define NTP_RESYNC_INTERVAL_MS 3600000      // Ressincronizar a cada 1 hora (3600 * 1000)
 #define BRASILIA_OFFSET_SECONDS (-3 * 3600) // Fuso horário de Brasília (UTC-3)
 
 // === GLOBAIS DE TEMPO (NOVAS) ===
@@ -160,16 +162,32 @@ void vBlinkLed(u8_t LED_PIN)
 void vDisplayTask(void *pvParameters)
 {
     DisplayData data;
-    char l1[32], l2[32], l3[32], l4[32];
+    char line1_temp[20];
+    char line2_header[20];
+    char line3_accel[20];
+    char line4_gyro[20];
+
     for (;;)
     {
         if (xQueueReceive(displayQueue, &data, portMAX_DELAY) == pdTRUE)
         {
-            snprintf(l1, sizeof(l1), "Ax: %.2f g", data.ax);
-            snprintf(l2, sizeof(l2), "Ay: %.2f g", data.ay);
-            snprintf(l3, sizeof(l3), "gz: %.1f g", data.gz);
-            snprintf(l4, sizeof(l4), "Temp: %.1f C", data.temp);
-            display_message(l1, l2, l3, l4);
+            // Linha 1: Temperatura (agora como inteiro)
+            // Mudança de %.1f para %.0f
+            snprintf(line1_temp, sizeof(line1_temp), "Temp: %.0f C", data.temp);
+
+            // Linha 2: Cabeçalho (sem alteração)
+            strcpy(line2_header, "   x /   y /   z");
+
+            // Linha 3: Dados do Acelerômetro (agora como inteiros)
+            // Mudança de %4.1f para %4.0f
+            snprintf(line3_accel, sizeof(line3_accel), "A:%4.0f/%4.0f/%4.0f", data.ax, data.ay, data.az);
+
+            // Linha 4: Dados do Giroscópio (agora como inteiros)
+            // Mudança de %4.1f para %4.0f
+            snprintf(line4_gyro, sizeof(line4_gyro), "G:%4.0f/%4.0f/%4.0f", data.gx, data.gy, data.gz);
+            
+            // Envia as 4 linhas formatadas para a função de display
+            display_message(line1_temp, line2_header, line3_accel, line4_gyro);
         }
     }
 }
@@ -192,9 +210,11 @@ void vMpuSensorTask(void *pvParameters)
             DisplayData display_info = {
                 .ax = sensor_data.accel_x,
                 .ay = sensor_data.accel_y,
+                .az = sensor_data.accel_z,
+                .gx = sensor_data.gyro_x,
+                .gy = sensor_data.gyro_y,
                 .gz = sensor_data.gyro_z,
-                .temp = sensor_data.temperature
-            };
+                .temp = sensor_data.temperature};
             xQueueOverwrite(displayQueue, &display_info);
 
             bool has_changed = (fabs(sensor_data.accel_x - last_published_data.accel_x) > 0.1);
@@ -203,11 +223,14 @@ void vMpuSensorTask(void *pvParameters)
             {
                 if (mqtt_connected && mqtt_client_is_connected(client))
                 {
-                    if (time_synchronized) {
+                    if (time_synchronized)
+                    {
                         time_t brasili_time = current_utc_time + BRASILIA_OFFSET_SECONDS;
                         struct tm *local_tm = gmtime(&brasili_time);
                         strftime(timestamp_str, sizeof(timestamp_str), "%Y-%m-%dT%H:%M:%S", local_tm);
-                    } else {
+                    }
+                    else
+                    {
                         strcpy(timestamp_str, "1970-01-01T00:00:00");
                     }
 
@@ -240,16 +263,19 @@ void vMpuSensorTask(void *pvParameters)
 // ===================================================================
 // TASK PARA GERENCIAR O NTP
 // ===================================================================
-void vNtpTask(void *pvParameters) {
+void vNtpTask(void *pvParameters)
+{
     // Aguarda um pouco no início para garantir que o Wi-Fi está 100% estável
-    vTaskDelay(pdMS_TO_TICKS(10000)); 
+    vTaskDelay(pdMS_TO_TICKS(10000));
 
-    for (;;) {
+    for (;;)
+    {
         printf("NTP Task: Tentando sincronizar a hora...\n");
         display_message("WiFi OK", "Sincronizando", "Hora (NTP)...", NULL);
 
         // Chama a função bloqueante da sua nova biblioteca
-        if (ntp_get_time(NTP_SERVER, NTP_TIMEOUT_MS)) {
+        if (ntp_get_time(NTP_SERVER, NTP_TIMEOUT_MS))
+        {
             // Se funcionou, pega o tempo e atualiza as variáveis globais
             current_utc_time = ntp_get_last_time();
             time_synchronized = true;
@@ -258,11 +284,13 @@ void vNtpTask(void *pvParameters) {
             time_t brasili_time = current_utc_time + BRASILIA_OFFSET_SECONDS;
             struct tm *local_tm = gmtime(&brasili_time);
             printf("NTP Task: Hora sincronizada com sucesso: %s", asctime(local_tm));
-        } else {
+        }
+        else
+        {
             printf("NTP Task: Falha ao sincronizar a hora.\n");
             time_synchronized = false;
         }
-        
+
         // Dorme por 1 hora antes de tentar ressincronizar
         vTaskDelay(pdMS_TO_TICKS(NTP_RESYNC_INTERVAL_MS));
     }
@@ -293,7 +321,8 @@ int main()
     xTaskCreate(vMpuSensorTask, "MPU_Task", 1024, NULL, 1, NULL);
     xTaskCreate(vDisplayTask, "Display_Task", 512, NULL, 2, NULL);
     xTaskCreate(vNtpTask, "NTP_Task", 1024, NULL, 0, NULL);
-    
+
     vTaskStartScheduler();
-    while (1);
+    while (1)
+        ;
 }

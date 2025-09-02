@@ -208,9 +208,13 @@ inline int ssd1306_get_font(uint8_t character)
     {
         return 45;
     }
+    else if (character == '/')
+    {
+        return 46; // a barra vertical
+    }
     else
     {
-        return 0;
+        return 0; // Caractere padrão (vazio)
     }
 }
 
