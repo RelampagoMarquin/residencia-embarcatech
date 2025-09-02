@@ -9,7 +9,8 @@
 #include "lwip/dns.h"
 #include "lwip/ip_addr.h"
 #include "inc/ssd1306.h"
-#include "inc/mpu6050_handler.h" // <-- Incluindo a nova biblioteca
+#include "inc/mpu6050_handler.h"
+#include "inc/ntp_client.h"
 #include <stdio.h>
 #include <string.h>
 #include <math.h>
@@ -34,8 +35,7 @@
 #define I2C1_SDA 14
 #define I2C1_SCL 15
 #define LED_PIN_GREEN 11 // Led Verde
-#define LED_PIN_RED 13 // Led vermelho
-
+#define LED_PIN_RED 13   // Led vermelho
 
 // === FILAS E STRUCTS (sem alterações) ===
 QueueHandle_t displayQueue;
@@ -43,6 +43,17 @@ typedef struct
 {
     float ax, ay, gz, temp;
 } DisplayData;
+
+//=== NTP =====
+
+#define NTP_SERVER "pool.ntp.br" // Melhor usar o pool brasileiro
+#define NTP_TIMEOUT_MS 5000
+#define NTP_RESYNC_INTERVAL_MS 3600000 // Ressincronizar a cada 1 hora (3600 * 1000)
+#define BRASILIA_OFFSET_SECONDS (-3 * 3600) // Fuso horário de Brasília (UTC-3)
+
+// === GLOBAIS DE TEMPO (NOVAS) ===
+volatile bool time_synchronized = false;
+volatile time_t current_utc_time = 0;
 
 // === GLOBAIS MQTT (sem alterações) ===
 mqtt_client_t *client;
@@ -164,50 +175,52 @@ void vDisplayTask(void *pvParameters)
 }
 
 // ===================================================================
-// MUDANÇA: TASK DO SENSOR ADAPTADA PARA A NOVA BIBLIOTECA
+// TASK DO SENSOR ADAPTADA PARA A NOVA BIBLIOTECA
 // ===================================================================
 void vMpuSensorTask(void *pvParameters)
 {
-    // A nova biblioteca usa sua própria struct. Vamos usá-la.
     mpu6050_data_t sensor_data;
-
     char payload[512];
+    char timestamp_str[20]; // Buffer para a string do timestamp formatada
     TickType_t last_publish_time = xTaskGetTickCount();
     mpu6050_data_t last_published_data = {0};
 
     for (;;)
     {
-        // 1. LÊ OS DADOS USANDO A NOVA FUNÇÃO
-        // A conversão matemática já é feita dentro da biblioteca.
         if (mpu6050_read_data(&sensor_data))
         {
-            // 2. ENVIA DADOS PARA A FILA DO DISPLAY
-            DisplayData display_info = {
-                .ax = sensor_data.accel_x,
-                .ay = sensor_data.accel_y,
-                .gz = sensor_data.gyro_z,
-                .temp = sensor_data.temperature};
+            DisplayData display_info = { /*...*/ };
             xQueueOverwrite(displayQueue, &display_info);
 
-            // 3. LÓGICA DE PUBLICAÇÃO MQTT
             bool has_changed = (fabs(sensor_data.accel_x - last_published_data.accel_x) > 0.1);
-            TickType_t current_time = xTaskGetTickCount();
-            if ((current_time - last_publish_time > pdMS_TO_TICKS(10000) && has_changed) || (current_time - last_publish_time > pdMS_TO_TICKS(60000)))
+            TickType_t current_time_ticks = xTaskGetTickCount();
+            if ((current_time_ticks - last_publish_time > pdMS_TO_TICKS(10000) && has_changed) || (current_time_ticks - last_publish_time > pdMS_TO_TICKS(60000)))
             {
-                if (mqtt_connected)
+                if (mqtt_connected && mqtt_client_is_connected(client))
                 {
+                    // --- LÓGICA PARA OBTER E FORMATAR O TIMESTAMP ---
+                    if (time_synchronized) {
+                        // Calcula a hora local (Brasília) e formata a string para o padrão ISO 8601
+                        time_t brasili_time = current_utc_time + BRASILIA_OFFSET_SECONDS;
+                        struct tm *local_tm = gmtime(&brasili_time);
+                        strftime(timestamp_str, sizeof(timestamp_str), "%Y-%m-%dT%H:%M:%S", local_tm);
+                    } else {
+                        // Se a hora ainda não foi sincronizada, usa um placeholder
+                        strcpy(timestamp_str, "1970-01-01T00:00:00");
+                    }
+
                     snprintf(payload, sizeof(payload), "{\"team\":\"desafio%s\",\"device\":\"bitdoglab_%s\",\"ip\":\"%s\",\"ssid\":\"%s\",\"sensor\":\"MPU-6050\",\"data\":{\"accel\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},\"gyro\":{\"x\":%.2f,\"y\":%.2f,\"z\":%.2f},\"temperature\":%.1f},\"timestamp\":\"%s\"}",
                              DESAFIO_NUM, SEU_NOME,
                              ip4addr_ntoa(netif_ip4_addr(netif_default)), WIFI_SSID,
                              sensor_data.accel_x, sensor_data.accel_y, sensor_data.accel_z,
                              sensor_data.gyro_x, sensor_data.gyro_y, sensor_data.gyro_z,
-                             sensor_data.temperature, "2025-09-02T14:11:00");
-                    
+                             sensor_data.temperature, timestamp_str); // <-- Usa a string do timestamp
+
                     if (mqtt_publish(client, MQTT_TOPIC, payload, strlen(payload), 0, 0, NULL, NULL) == ERR_OK)
                     {
-                        printf("MQTT: Publicado!\n");
+                        printf("MQTT: Publicado com timestamp: %s\n", timestamp_str);
                         vBlinkLed(LED_PIN_GREEN);
-                        last_publish_time = current_time;
+                        last_publish_time = current_time_ticks;
                         last_published_data = sensor_data;
                     }
                     else
@@ -218,15 +231,41 @@ void vMpuSensorTask(void *pvParameters)
                 }
             }
         }
-        else
-        {
-            printf("Falha ao ler dados do MPU6050!\n");
-        }
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
+// ===================================================================
+// TASK PARA GERENCIAR O NTP
+// ===================================================================
+void vNtpTask(void *pvParameters) {
+    // Aguarda um pouco no início para garantir que o Wi-Fi está 100% estável
+    vTaskDelay(pdMS_TO_TICKS(10000)); 
 
-// === MAIN (sem alterações) ===
+    for (;;) {
+        printf("NTP Task: Tentando sincronizar a hora...\n");
+        display_message("WiFi OK", "Sincronizando", "Hora (NTP)...", NULL);
+
+        // Chama a função bloqueante da sua nova biblioteca
+        if (ntp_get_time(NTP_SERVER, NTP_TIMEOUT_MS)) {
+            // Se funcionou, pega o tempo e atualiza as variáveis globais
+            current_utc_time = ntp_get_last_time();
+            time_synchronized = true;
+
+            // Converte para hora local apenas para exibir no terminal
+            time_t brasili_time = current_utc_time + BRASILIA_OFFSET_SECONDS;
+            struct tm *local_tm = gmtime(&brasili_time);
+            printf("NTP Task: Hora sincronizada com sucesso: %s", asctime(local_tm));
+        } else {
+            printf("NTP Task: Falha ao sincronizar a hora.\n");
+            time_synchronized = false;
+        }
+        
+        // Dorme por 1 hora antes de tentar ressincronizar
+        vTaskDelay(pdMS_TO_TICKS(NTP_RESYNC_INTERVAL_MS));
+    }
+}
+
+// === MAIN ===
 int main()
 {
     init_all_peripherals();
@@ -245,13 +284,13 @@ int main()
     display_message("Hardware OK", "WiFi OK", "Conectando MQTT", ip4addr_ntoa(netif_ip4_addr(netif_default)));
     dns_gethostbyname(MQTT_SERVER, &mqtt_server_ip, dns_found_cb, NULL);
 
+    // O sleep_ms(3000) não é mais necessário aqui, pois a vNtpTask cuida da espera.
 
-    // Dá um tempinho para você ver no display
-    sleep_ms(3000);
-
+    // Criando as três tasks
     xTaskCreate(vMpuSensorTask, "MPU_Task", 1024, NULL, 1, NULL);
     xTaskCreate(vDisplayTask, "Display_Task", 512, NULL, 2, NULL);
+    xTaskCreate(vNtpTask, "NTP_Task", 1024, NULL, 0, NULL);
+    
     vTaskStartScheduler();
-    while (1)
-        ;
+    while (1);
 }
