@@ -175,13 +175,13 @@ void vDisplayTask(void *pvParameters)
 }
 
 // ===================================================================
-// TASK DO SENSOR ADAPTADA PARA A NOVA BIBLIOTECA
+// TASK DO SENSOR
 // ===================================================================
 void vMpuSensorTask(void *pvParameters)
 {
     mpu6050_data_t sensor_data;
     char payload[512];
-    char timestamp_str[20]; // Buffer para a string do timestamp formatada
+    char timestamp_str[20];
     TickType_t last_publish_time = xTaskGetTickCount();
     mpu6050_data_t last_published_data = {0};
 
@@ -189,7 +189,12 @@ void vMpuSensorTask(void *pvParameters)
     {
         if (mpu6050_read_data(&sensor_data))
         {
-            DisplayData display_info = { /*...*/ };
+            DisplayData display_info = {
+                .ax = sensor_data.accel_x,
+                .ay = sensor_data.accel_y,
+                .gz = sensor_data.gyro_z,
+                .temp = sensor_data.temperature
+            };
             xQueueOverwrite(displayQueue, &display_info);
 
             bool has_changed = (fabs(sensor_data.accel_x - last_published_data.accel_x) > 0.1);
@@ -198,14 +203,11 @@ void vMpuSensorTask(void *pvParameters)
             {
                 if (mqtt_connected && mqtt_client_is_connected(client))
                 {
-                    // --- LÓGICA PARA OBTER E FORMATAR O TIMESTAMP ---
                     if (time_synchronized) {
-                        // Calcula a hora local (Brasília) e formata a string para o padrão ISO 8601
                         time_t brasili_time = current_utc_time + BRASILIA_OFFSET_SECONDS;
                         struct tm *local_tm = gmtime(&brasili_time);
                         strftime(timestamp_str, sizeof(timestamp_str), "%Y-%m-%dT%H:%M:%S", local_tm);
                     } else {
-                        // Se a hora ainda não foi sincronizada, usa um placeholder
                         strcpy(timestamp_str, "1970-01-01T00:00:00");
                     }
 
@@ -214,7 +216,7 @@ void vMpuSensorTask(void *pvParameters)
                              ip4addr_ntoa(netif_ip4_addr(netif_default)), WIFI_SSID,
                              sensor_data.accel_x, sensor_data.accel_y, sensor_data.accel_z,
                              sensor_data.gyro_x, sensor_data.gyro_y, sensor_data.gyro_z,
-                             sensor_data.temperature, timestamp_str); // <-- Usa a string do timestamp
+                             sensor_data.temperature, timestamp_str);
 
                     if (mqtt_publish(client, MQTT_TOPIC, payload, strlen(payload), 0, 0, NULL, NULL) == ERR_OK)
                     {
@@ -234,6 +236,7 @@ void vMpuSensorTask(void *pvParameters)
         vTaskDelay(pdMS_TO_TICKS(1000));
     }
 }
+
 // ===================================================================
 // TASK PARA GERENCIAR O NTP
 // ===================================================================
