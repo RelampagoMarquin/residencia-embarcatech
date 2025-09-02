@@ -29,5 +29,5 @@
 
 // This defaults to 4
 #define MQTT_REQ_MAX_IN_FLIGHT 5
-
+#define MQTT_OUTPUT_RINGBUF_SIZE 512
 #endif

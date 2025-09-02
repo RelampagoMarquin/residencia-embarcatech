@@ -33,13 +33,15 @@
 #define I2C0_SCL 1
 #define I2C1_SDA 14
 #define I2C1_SCL 15
-#define LED_PIN 11
+#define LED_PIN_GREEN 11 // Led Verde
+#define LED_PIN_RED 13 // Led vermelho
+
 
 // === FILAS E STRUCTS (sem alterações) ===
 QueueHandle_t displayQueue;
 typedef struct
 {
-    float ax, ay, temp;
+    float ax, ay, gz, temp;
 } DisplayData;
 
 // === GLOBAIS MQTT (sem alterações) ===
@@ -94,8 +96,11 @@ void init_all_peripherals()
     gpio_pull_up(I2C1_SCL);
     ssd1306_init(i2c1);
 
-    gpio_init(LED_PIN);
-    gpio_set_dir(LED_PIN, GPIO_OUT);
+    gpio_init(LED_PIN_GREEN);
+    gpio_set_dir(LED_PIN_GREEN, GPIO_OUT);
+
+    gpio_init(LED_PIN_RED);
+    gpio_set_dir(LED_PIN_RED, GPIO_OUT);
 
     display_message("Hardware OK", "Iniciando WiFi...", NULL, NULL);
 }
@@ -134,7 +139,7 @@ void dns_found_cb(const char *name, const ip_addr_t *ipaddr, void *callback_arg)
 }
 
 // === TASKS DO FREERTOS ===
-void vBlinkLed()
+void vBlinkLed(u8_t LED_PIN)
 {
     gpio_put(LED_PIN, 1);
     vTaskDelay(pdMS_TO_TICKS(50));
@@ -144,15 +149,16 @@ void vBlinkLed()
 void vDisplayTask(void *pvParameters)
 {
     DisplayData data;
-    char l1[32], l2[32], l3[32];
+    char l1[32], l2[32], l3[32], l4[32];
     for (;;)
     {
         if (xQueueReceive(displayQueue, &data, portMAX_DELAY) == pdTRUE)
         {
             snprintf(l1, sizeof(l1), "Ax: %.2f g", data.ax);
             snprintf(l2, sizeof(l2), "Ay: %.2f g", data.ay);
-            snprintf(l3, sizeof(l3), "Temp: %.1f C", data.temp);
-            display_message("MPU-6050 Data", l1, l2, l3);
+            snprintf(l3, sizeof(l3), "gz: %.1f g", data.gz);
+            snprintf(l4, sizeof(l4), "Temp: %.1f C", data.temp);
+            display_message(l1, l2, l3, l4);
         }
     }
 }
@@ -179,6 +185,7 @@ void vMpuSensorTask(void *pvParameters)
             DisplayData display_info = {
                 .ax = sensor_data.accel_x,
                 .ay = sensor_data.accel_y,
+                .gz = sensor_data.gyro_z,
                 .temp = sensor_data.temperature};
             xQueueOverwrite(displayQueue, &display_info);
 
@@ -194,17 +201,19 @@ void vMpuSensorTask(void *pvParameters)
                              ip4addr_ntoa(netif_ip4_addr(netif_default)), WIFI_SSID,
                              sensor_data.accel_x, sensor_data.accel_y, sensor_data.accel_z,
                              sensor_data.gyro_x, sensor_data.gyro_y, sensor_data.gyro_z,
-                             sensor_data.temperature, "2025-09-01T18:50:00");
+                             sensor_data.temperature, "2025-09-02T14:11:00");
+                    
                     if (mqtt_publish(client, MQTT_TOPIC, payload, strlen(payload), 0, 0, NULL, NULL) == ERR_OK)
                     {
                         printf("MQTT: Publicado!\n");
-                        vBlinkLed();
+                        vBlinkLed(LED_PIN_GREEN);
                         last_publish_time = current_time;
                         last_published_data = sensor_data;
                     }
                     else
                     {
                         printf("MQTT: Erro ao publicar.\n");
+                        vBlinkLed(LED_PIN_RED);
                     }
                 }
             }
