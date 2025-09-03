@@ -16,7 +16,7 @@
 #include <math.h>
 
 // ===================================================================
-// CONFIGURAÇÕES (sem alterações)
+// CONFIGURAÇÕES
 // ===================================================================
 #define WIFI_SSID "tarefa-mqtt"
 #define WIFI_PASSWORD "laica@2025"
@@ -29,7 +29,7 @@
 #define MQTT_CLIENT_ID SEU_NOME "-pico"
 #define MQTT_TOPIC "ha/desafio" DESAFIO_NUM "/" SEU_NOME "/mpu6050"
 
-// === PINOS (sem alterações) ===
+// === PINOS ===
 #define I2C0_SDA 0
 #define I2C0_SCL 1
 #define I2C1_SDA 14
@@ -171,19 +171,16 @@ void vDisplayTask(void *pvParameters)
     {
         if (xQueueReceive(displayQueue, &data, portMAX_DELAY) == pdTRUE)
         {
-            // Linha 1: Temperatura (agora como inteiro)
-            // Mudança de %.1f para %.0f
+            // Linha 1: Temperatura
             snprintf(line1_temp, sizeof(line1_temp), "Temp: %.0f C", data.temp);
 
             // Linha 2: Cabeçalho (sem alteração)
             strcpy(line2_header, "   x /   y /   z");
 
-            // Linha 3: Dados do Acelerômetro (agora como inteiros)
-            // Mudança de %4.1f para %4.0f
-            snprintf(line3_accel, sizeof(line3_accel), "A:%4.0f/%4.0f/%4.0f", data.ax, data.ay, data.az);
+            // Linha 3: Dados do Acelerômetro
+            snprintf(line3_accel, sizeof(line3_accel), "A:%.1f/%.1f/%.1f", data.ax, data.ay, data.az);
 
-            // Linha 4: Dados do Giroscópio (agora como inteiros)
-            // Mudança de %4.1f para %4.0f
+            // Linha 4: Dados do Giroscópio
             snprintf(line4_gyro, sizeof(line4_gyro), "G:%4.0f/%4.0f/%4.0f", data.gx, data.gy, data.gz);
             
             // Envia as 4 linhas formatadas para a função de display
@@ -314,8 +311,6 @@ int main()
     }
     display_message("Hardware OK", "WiFi OK", "Conectando MQTT", ip4addr_ntoa(netif_ip4_addr(netif_default)));
     dns_gethostbyname(MQTT_SERVER, &mqtt_server_ip, dns_found_cb, NULL);
-
-    // O sleep_ms(3000) não é mais necessário aqui, pois a vNtpTask cuida da espera.
 
     // Criando as três tasks
     xTaskCreate(vMpuSensorTask, "MPU_Task", 1024, NULL, 1, NULL);
