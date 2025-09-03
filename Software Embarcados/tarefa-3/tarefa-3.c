@@ -18,8 +18,8 @@
 // ===================================================================
 // CONFIGURAÇÕES
 // ===================================================================
-#define WIFI_SSID "tarefa-mqtt"
-#define WIFI_PASSWORD "laica@2025"
+#define WIFI_SSID "SUA REDE WIFI"
+#define WIFI_PASSWORD "SUA SENHA DO WIFI"
 #define DESAFIO_NUM "15"
 #define SEU_NOME "marcos.silva"
 #define MQTT_SERVER "mqtt.iot.natal.br"
