@@ -1,0 +1,4142 @@
+#   Não apaguem configurações dos outros alunos
+#   Sempre adicione a sua configuração, apenas nesse arquivo
+#   Se for criar outro modelo, diferente de "sensor" adicione no final do arquivo, antes veja se já existe. 
+#   Leonardo Amorim 02/09/2025
+#
+
+################################################################################
+#           TIPO SENSOR
+################################################################################
+sensor:
+################################################################################
+
+############################# Luan Damasceno ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/luan.damasceno/mpu6050"
+    name: "Luan Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+############################# Ermerson Silva #################################
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Acelerômetro X"
+    unique_id: "desafio12_ermerson_silva_accel_x"
+    state_class: measurement
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Acelerômetro Y"
+    unique_id: "desafio12_ermerson_silva_accel_y"
+    state_class: measurement
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Acelerômetro Z"
+    unique_id: "desafio12_ermerson_silva_accel_z"
+    state_class: measurement
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Giroscópio X"
+    unique_id: "desafio12_ermerson_silva_gyro_x"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Giroscópio Y"
+    unique_id: "desafio12_ermerson_silva_gyro_y"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Giroscópio Z"
+    unique_id: "desafio12_ermerson_silva_gyro_z"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_topic: "ha/desafio12/ermerson.silva/mpu6050"
+    name: "Ermerson Temperatura MPU"
+    unique_id: "desafio12_ermerson_silva_temp"
+    device_class: "temperature"
+    state_class: measurement
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.temperature }}"
+
+############################# João Guedes ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio07/joao.guedes/mpu6050"
+    name: "Baiano Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+
+############################# Micael Balza ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio05/micael.balza/mpu6050"
+    name: "Micael Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+
+############################# Marina Leite ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/marina.leite/mpu6050"
+    name: "Marina MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+############################# Emilly Santos ####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/emilly.santos/mpu6050"
+    name: "Emilly - Temperature"
+    unit_of_measurement: "°C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+############################# Manoel Serafim ####################################
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio18/manoel.serafim/mpu6050"
+    name: "Manoel MPU Temperature"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:temperature-celsius
+    
+
+################################################################################
+############################# Fabricio Silva ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "Fabricio Acelerômetro X"
+    unique_id: pico_w_fabricio_accel_x
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Fabricio Acelerômetro Y"
+    unique_id: pico_w_fabricio_accel_y
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Fabricio Acelerômetro Z"
+    unique_id: pico_w_fabricio_accel_z
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "Fabricio Giroscópio X"
+    unique_id: pico_w_fabricio_gyro_x
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Fabricio Giroscópio Y"
+    unique_id: pico_w_fabricio_gyro_y
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Fabricio Giroscópio Z"
+    unique_id: pico_w_fabricio_gyro_z
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "Fabricio Temperatura MPU6050"
+    unique_id: pico_w_fabricio_temperatura
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+  - name: "Fabricio Inclinação X (Pitch)"
+    unique_id: pico_w_fabricio_pitch
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    # Calcula o ângulo de inclinação em graus usando os dados do acelerômetro
+    value_template: >
+      {{ (atan2(value_json.data.accel.y, sqrt(value_json.data.accel.x**2 + value_json.data.accel.z**2)) * 180 / 3.14159) | round(1) }}
+    state_class: measurement
+    unit_of_measurement: "°"
+    icon: mdi:angle-acute
+
+  - name: "Fabricio Inclinação Y (Roll)"
+    unique_id: pico_w_fabricio_roll
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    # Calcula o ângulo de rotação em graus usando os dados do acelerômetro
+    value_template: >
+      {{ (atan2(-1 * value_json.data.accel.x, value_json.data.accel.z) * 180 / 3.14159) | round(1) }}
+    state_class: measurement
+    unit_of_measurement: "°"
+    icon: mdi:angle-acute
+
+################################################################################
+################################################################################
+############################# Marcos Silva #####################################
+  # --- Sensores do Acelerômetro ---
+  - name: "Marcos Silva Acelerometro X"
+    unique_id: marcos_silva_pico_accel_x
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-x-arrow
+
+  - name: "Marcos Silva Acelerometro Y"
+    unique_id: marcos_silva_pico_accel_y
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-y-arrow
+
+  - name: "Marcos Silva Acelerometro Z"
+    unique_id: marcos_silva_pico_accel_z
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-z-arrow
+
+  # --- Sensores do Giroscópio ---
+  - name: "Marcos Silva Giroscopio X"
+    unique_id: marcos_silva_pico_gyro_x
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Marcos Silva Giroscopio Y"
+    unique_id: marcos_silva_pico_gyro_y
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Marcos Silva Giroscopio Z"
+    unique_id: marcos_silva_pico_gyro_z
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+  # --- Sensor de Temperatura ---
+  - name: "Marcos Silva Temperatura"
+    unique_id: marcos_silva_pico_temperatura
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+
+  # --- Sensor de Timestamp ---
+  - name: "Marcos Silva Ultima Leitura"
+    unique_id: marcos_silva_pico_timestamp
+    state_topic: "ha/desafio15/marcos.silva/mpu6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+
+################################################################################
+
+################################################################################
+################################################################################
+############################# JULIO COSTA #####################################
+  # --- Sensores do Acelerômetro ---
+  - name: "JULIO COSTA Acelerometro X"
+    unique_id: julio_costa_pico_accel_x
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-x-arrow
+
+  - name: "JULIO COSTA Acelerometro Y"
+    unique_id: julio_costa_pico_accel_y
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-y-arrow
+
+  - name: "JULIO COSTA Acelerometro Z"
+    unique_id: julio_costa_pico_accel_z
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-z-arrow
+
+  # --- Sensores do Giroscópio ---
+  - name: "JULIO COSTA Giroscopio X"
+    unique_id: julio_costa_pico_gyro_x
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "JULIO COSTA Giroscopio Y"
+    unique_id: julio_costa_pico_gyro_y
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "JULIO COSTA Giroscopio Z"
+    unique_id: julio_costa_pico_gyro_z
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+  # --- Sensor de Temperatura ---
+  - name: "JULIO COSTA Temperatura"
+    unique_id: julio_costa_pico_temperatura
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+
+  # --- Sensor de Timestamp ---
+  - name: "JULIO COSTA Ultima Leitura"
+    unique_id: julio_costa_pico_timestamp
+    state_topic: "ha/desafio15/julio.costa/mpu6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+
+################################################################################
+################################################################################
+############################# Caua Macedo #####################################
+
+  - name: "Temperatura MPU6050"
+    unique_id: "meu_disp_temp"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+
+  - name: "Aceleração X"
+    unique_id: "meu_disp_accel_x"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Aceleração Y"
+    unique_id: "meu_disp_accel_y"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Aceleração Z"
+    unique_id: "meu_disp_accel_z"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+  - name: "Giroscópio X"
+    unique_id: "meu_disp_gyro_x"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Giroscópio Y"
+    unique_id: "meu_disp_gyro_y"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Giroscópio Z"
+    unique_id: "meu_disp_gyro_z"
+    state_topic: "ha/desafio15/caua.macedo/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+############################# Lucas Medeiros ####################################
+  - name: "Lucas E MPU-6050 Aceleração X"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    unique_id: "lucas_pico_mpu6050_accel_x"
+
+  - name: "Lucas E MPU-6050 Aceleração Y"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    unique_id: "lucas_pico_mpu6050_accel_y"
+
+  - name: "Lucas E MPU-6050 Aceleração Z"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    unique_id: "lucas_pico_mpu6050_accel_z"
+
+  - name: "Lucas E MPU-6050 Giroscópio X"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unique_id: "lucas_pico_mpu6050_gyro_x"
+
+  - name: "Lucas E MPU-6050 Giroscópio Y"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unique_id: "lucas_pico_mpu6050_gyro_y"
+
+  - name: "Lucas E MPU-6050 Giroscópio Z"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unique_id: "lucas_pico_mpu6050_gyro_z"
+
+  - name: "Lucas E MPU-6050 Temperatura"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.temperature }}"
+    unique_id: "lucas_pico_mpu6050_temperature"
+    
+  - name: "Lucas E MPU-6050 teste"
+    state_topic: "ha/desafio20/lucas.medeiros/mpu6050"
+    unique_id: "lucas_pico_mpu6050_teste"
+    
+
+
+################################################################################
+
+############################# Danilo Santos ####################################
+  - state_class: measurement
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo Temp"
+    value_template: "{{value_json.data.temp}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio09/danilo.santos/joy"
+    name: "Danilo Joy"
+    value_template: "{{value_json.joystick}}"
+    icon: mdi:gamepad-round
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo timestamp"
+    value_template: "{{value_json.data.timestamp}}"
+    icon: mdi:clock-in
+    
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo TEAM"
+    value_template: "{{ value_json.team }}"
+    icon: mdi:account-group
+    
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo DEVICE"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:chip
+
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo SENSOR TYPE"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:motion-sensor
+    
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo BitDogLab IP"
+    unique_id: "danilo_santos_bitdoglab_ip"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+
+  - state_topic: "ha/desafio09/danilo.santos/mpu6050"
+    name: "Danilo BitDogLab WiFi"
+    unique_id: "danilo_santos_bitdoglab_wifi"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+################################################################################
+
+############################# Stanley Souza ####################################
+  - state_class: measurement
+    state_topic: "ha/desafio02/stanley.souza/temp"
+    name: "Stanley Temp"
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio02/stanley.souza/joy"
+    name: "Stanley Joy"
+    value_template: "{{value_json}}"
+    icon: mdi:gamepad-variant-outline
+
+################################################################################
+
+############################# Rafael Santos ####################################
+  - state_class: measurement
+    state_topic: "ha/desafio02/rafael.santos/temp"
+    name: "Rafael S Temp"
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json}}"
+    icon: mdi:thermometer
+    
+  - state_class: measurement
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Temp"
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio02/rafael.santos/joy"
+    name: "Rafael S Joy"
+    value_template: "{{value_json}}"
+    icon: mdi:gamepad-variant-outline
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Device"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:chip
+    
+  - state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU IP"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+
+  - state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - state_topic: "ha/desafio02/rafael.santos/mpu6050"
+    name: "Rafael S MPU Timestamp"
+    value_template: "{{ value_json.timestamp }}"
+    icon: mdi:clock-check-outline
+
+################################################################################
+
+############################# Diogo Sena #######################################
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Acelerômetro X"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Acelerômetro Y"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Acelerômetro Z"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Giroscopio X"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Giroscopio Y"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo Giroscopio Z"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo MPU Temp"
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo MPU Device"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:chip
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo MPU IP"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo MPU SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+    
+  - state_topic: "ha/desafio02/diogo.sena/mpu6050"
+    name: "Diogo MPU Timestamp"
+    value_template: "{{ value_json.timestamp }}"
+    icon: mdi:clock-check-outline
+    
+################################################################################
+
+############################# Ubiracy Nóbrega ##################################
+  
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Temperatura"
+    state_class: measurement
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Acelerômetro X"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Acelerômetro Y"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Acelerômetro Z"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Giroscopio X"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Giroscopio Y"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio09/ubiracy.nobrega/mpu6050"
+    name: "Ubiracy Giroscopio Z"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+################################################################################
+
+############################# Lucas de Almeida #################################
+  - state_class: measurement
+    state_topic: "ha/desafio09/lucas.santos/temp"
+    name: "Lucas Temp"
+    unit_of_measurement: "ºC"
+    value_template: "{{value_json}}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio09/lucas.santos/joy"
+    name: "Lucas Joy"
+    value_template: "{{value_json}}"
+    icon: mdi:gamepad-variant-outline
+    
+  - state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Acelerômetro X"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Acelerômetro Y"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Acelerômetro Z"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Giroscopio X"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Giroscopio Y"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio09/lucas.santos/MPU6050"
+    name: "Lucas Giroscopio Z"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+################################################################################
+
+############################# Mario Marques ####################################
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario ACEL X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario ACEL Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario ACEL Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario GIRO X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario GIRO Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/mario.marques/mpu6050"
+    name: "Mario GIRO Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+################################################################################
+
+############################### Cauã Brito #####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA ACEL X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA ACEL Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA ACEL Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel_z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA GIRO X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA GIRO Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA GIRO Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro_z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/caua.brito/mpu6050"
+    name: "CAUA Temperatura MPU6050"
+    unit_of_measurement: "°/C"
+    value_template: "{{ value_json.data.temp_MPU6050 }}"
+    icon: mdi:temperature-celsius
+    
+############################# Andriéria Dantas ####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Accel X)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Accel Y)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Accel Z)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Gyro X)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Gyro Y)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Gyro Z)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio10/andrieria.dantas/mpu6050"
+    name: "Andriéria (Temperature)"
+    unit_of_measurement: "°C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+
+################################################################################
+
+############################# Thalys Rodrigues #################################
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU ACCEL X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU ACCEL Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU ACCEL Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU GYRO X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU GYRO Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU GYRO Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys MPU TEMPERATURA"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+
+  - state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys DEVICE STATUS"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:chip
+
+  - state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys WIFI SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys SENSOR TYPE"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:motion-sensor
+
+  - state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys TEAM"
+    value_template: "{{ value_json.team }}"
+    icon: mdi:account-group
+
+  - state_topic: "ha/desafio08/thalys/mpu6050"
+    name: "Thalys TIMESTAMP"
+    value_template: "{{ value_json.timestamp }}"
+    icon: mdi:clock-outline
+
+################################################################################
+
+############################### Higo Pontes ####################################
+
+  - state_topic: "ha/desafio13/Jose.Simplicio/Jostick"
+    name: "Higo Joystick"
+    value_template: "{{ value_json }}"
+    icon: mdi:gamepad-round-outline
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Temperatura"
+    name: "Higo Temperatura Interna"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json }}"
+    icon: mdi:thermometer
+    
+    ########################
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/temp"
+    name: "Higo Temperatura MPU6050"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.value }}"
+    icon: mdi:thermometer
+    
+    #Acelerometro Eixos
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/accel"
+    name: "Higo Acelerometro Eixo(Z)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/accel"
+    name: "Higo Acelerometro Eixo(X)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.x }}"
+    icon: mdi:axis-x-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/accel"
+    name: "Higo Acelerometro Eixo(Y)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.y }}"
+    icon: mdi:axis-y-arrow
+    
+    #Giroscopio eixos
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/gyro"
+    name: "Higo Giroscopio Eixo(Z)"
+    unit_of_measurement: "°/S"
+    value_template: "{{ value_json.data.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/gyro"
+    name: "Higo Giroscopio Eixo(X)"
+    unit_of_measurement: "°/S"
+    value_template: "{{ value_json.data.x  }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio13/Jose.Simplicio/Mpu6050/gyro"
+    name: "Higo Giroscopio Eixo(Y)"
+    unit_of_measurement: "°/S"
+    value_template: "{{ value_json.data.y  }}"
+    icon: mdi:axis-y-rotate-clockwise
+
+    
+    #############################################################################
+    
+    ############################### CARLA ALVES ####################################
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/leituras"
+    name: "Carla Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperatura }}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio10/carla.alves/leituras"
+    name: "Carla Joystick"
+    value_template: "{{value_json.data.joystick}}"
+    icon: mdi:gamepad-variant-outline
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Acelerômetro X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Acelerômetro Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Acelerômetro Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/carla.alves/MPU6050"
+    name: "Carla - Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+################################################################################
+
+########################## Izabelle Medeiros ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/payload"
+    name: "Izabelle temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperatura }}"
+    icon: mdi:thermometer
+
+  - state_topic: "ha/desafio10/izabelle.medeiros/payload"
+    name: "Izabelle joystick"
+    value_template: "{{ value_json.data.joystick }}"
+    icon: mdi:gamepad-variant-outline
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Acelerômetro X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accelX }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Acelerômetro Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accelY }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Acelerômetro Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accelZ }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyroX }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyroY }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyroZ }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio10/izabelle.medeiros/mpu6050"
+    name: "Izabelle - Temperatura MPU"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.tempC }}"
+    icon: mdi:thermometer
+    
+    ################################################################################
+    
+    ########################## João Victor Pontes ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio08/joao.pontes/mpu6050"
+    name: "João Pontes Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+    ################################################################################
+    
+    ########################### José Francisco #################################
+  - state_class: measurement
+    state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Temp MPU"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:temperature-celsius
+    
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+    
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. IP"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+    
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Sensor"
+    value_template: "{{ value_json.sensor }}"
+    
+    
+    ########Giroscópio########
+    
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Giroscópio X"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:rotate-orbit
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Giroscópio Y"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:rotate-orbit
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Giroscópio Z"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:rotate-orbit
+    
+    
+    ########Acelerômetro########
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Acelerômetro X"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Acelerômetro Y"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+  - state_topic: "ha/desafio03/jose.fonseca/mpu6050"
+    name: "Jose F. Acelerômetro Z"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+    ############################################################################
+    
+    ############################# Erikson Pedro ####################################
+  - name: "Team Erikson"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.Team }}"
+    
+  - name: "Device Erikson"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.Device }}"
+
+  - name: "Rede Erikson"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.ssid }}"
+    
+  - name: "Hora Erikson"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.datetime }}"
+    
+  - name: "Sensor Erikson"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.sensor }}"
+    
+  - name: "Erikson Accel X"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "g"
+    
+  - name: "Erikson Accel Y "
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "g"
+    
+  - name: "Erikson Accel Z"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "g"
+    
+  - name: "Erikson Giro X"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    
+  - name: "Erikson Giro Y"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    
+  - name: "Erikson Giro Z"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    
+  - name: "Erikson IP do Pico"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.ip }}"
+    
+  - name: "Erikson Temperatura"
+    state_topic: "ha/desafio08/Erikson.Nicacio/temp"
+    value_template: "{{ value_json.data.temperatura }}"
+    unit_of_measurement: "°C"
+    
+    ################################################################################
+    
+    ########################## Antônio Irineu Filho ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio05/antonio.filho/MPU6050"
+    name: "Antônio Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+########################## Wesley Santos ##################################
+  # Sensor MPU6050
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Temperatura MPU6050"
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    value_template: "{{ value_json.sensors.mpu6050.temperature }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Aceleração X"
+    unit_of_measurement: "g"
+    icon: mdi:axis-x-arrow
+    value_template: "{{ value_json.sensors.mpu6050.accel.x }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Aceleração Y"
+    unit_of_measurement: "g"  
+    icon: mdi:axis-y-arrow
+    value_template: "{{ value_json.sensors.mpu6050.accel.y }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Aceleração Z"
+    unit_of_measurement: "g"
+    icon: mdi:axis-z-arrow
+    value_template: "{{ value_json.sensors.mpu6050.accel.z }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.sensors.mpu6050.gyro.x }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.sensors.mpu6050.gyro.y }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.sensors.mpu6050.gyro.z }}"
+    availability_template: "{{ value_json.sensors.mpu6050.valid }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  # Sensor RP2040
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    state_class: measurement
+    name: "Wesley Temperatura RP2040"
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    value_template: "{{ value_json.sensors.rp2040.temperature }}"
+    availability_template: "{{ value_json.sensors.rp2040.valid }}"
+  
+  # Controle Joystick
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    name: "Wesley Joystick Direção"
+    value_template: "{{ value_json.controls.joystick.direction }}"
+    availability_template: "{{ value_json.controls.joystick.valid }}"
+    icon: mdi:gamepad-cross
+
+  # Metadados do sistema
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    name: "Wesley Sensor Trigger"
+    icon: mdi:target
+    value_template: "{{ value_json.trigger_sensor }}"
+
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    name: "Wesley Timestamp"
+    icon: mdi:clock
+    value_template: "{{ value_json.timestamp }}"
+
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    name: "Wesley Device IP"
+    icon: mdi:ip-network
+    value_template: "{{ value_json.ip }}"
+
+  - state_topic: "ha/desafio13/wesley.santos/dados"
+    name: "Wesley WiFi SSID"
+    icon: mdi:wifi
+    value_template: "{{ value_json.ssid }}"
+
+############################################################
+
+############################ Fellipe Brito #####################################
+  - name: "Fellipe Accel X"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    icon: mdi:axis-x-arrow
+
+  - name: "Fellipe Accel Y"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    icon: mdi:axis-y-arrow
+
+  - name: "Fellipe Accel Z"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    icon: mdi:axis-z-arrow
+
+  - name: "Fellipe Gyro X"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - name: "Fellipe Gyro Y"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Fellipe Gyro Z"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - name: "Fellipe Temperatura"
+    state_topic: "ha/desafio13/fellipe.brito/mpu"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    state_class: measurement
+    icon: mdi:temperature-celsius
+
+########################## Mozart Lima ##################################
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/mozart.lima/mpu6050"
+    name: "Mozart Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+############################################################
+
+########################## Arthur Holanda ##################################
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/arthur.holanda/mpu6050"
+    name: "Holanda Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+############################################################
+
+##########################Luís Guilherme#####################################
+
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Accel X"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "g"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Accel Y"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "g"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Accel Z"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "g"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Gyro X"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Gyro Y"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio12/luis.coutinho/mpu6050"
+    name: "Luis Gyro Z"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+
+################################################################################
+
+
+
+############################# Marcelo Olivira ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "Marcelo Olivira Acelerômetro X"
+    unique_id: pico_w_marcelo_oliveira_accel_x
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Marcelo Olivira Acelerômetro Y"
+    unique_id: pico_w_marcelo_oliveira_accel_y
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Marcelo Olivira Acelerômetro Z"
+    unique_id: pico_w_marcelo_oliveira_accel_z
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "Marcelo Olivira Giroscópio X"
+    unique_id: pico_w_marcelo_oliveira_gyro_x
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Marcelo Olivira Giroscópio Y"
+    unique_id: pico_w_marcelo_oliveira_gyro_y
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Marcelo Olivira Giroscópio Z"
+    unique_id: pico_w_marcelo_oliveira_gyro_z
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "Marcelo Olivira Temperatura MPU6050"
+    unique_id: pico_w_marcelo_oliveira_temperatura
+    state_topic: "ha/desafio18/marcelo.oliveira/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+ ################################################################################  
+ 
+ 
+ ############################# carlos silva ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "carlos silva Acelerômetro X"
+    unique_id: pico_w_carlos_silva_accel_x
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "carlos silva Acelerômetro Y"
+    unique_id: pico_w_carlos_silva_accel_y
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "carlos silva Acelerômetro Z"
+    unique_id: pico_w_carlos_silva_accel_z
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "carlos silva Giroscópio X"
+    unique_id: pico_w_carlos_silva_gyro_x
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "carlos silva Giroscópio Y"
+    unique_id: pico_w_carlos_silva_gyro_y
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "carlos silva Giroscópio Z"
+    unique_id: pico_w_carlos_silva_gyro_z
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "carlos silva Temperatura MPU6050"
+    unique_id: pico_w_carlos_silva_temperatura
+    state_topic: "ha/desafio06/carlos.silva/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+    
+ ################################################################################   
+
+ 
+ ############################# hyago santos ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "hyago santos Acelerômetro X"
+    unique_id: pico_w_hyago_santos_accel_x
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "hyago santos Acelerômetro Y"
+    unique_id: pico_w_hyago_santos_accel_y
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "hyago santos Acelerômetro Z"
+    unique_id: pico_w_hyago_santos_accel_z
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "hyago santos Giroscópio X"
+    unique_id: pico_w_hyago_santos_gyro_x
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "hyago santos Giroscópio Y"
+    unique_id: pico_w_hyago_santos_gyro_y
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "hyago santos Giroscópio Z"
+    unique_id: pico_w_hyago_santos_gyro_z
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "hyago santos Temperatura MPU6050"
+    unique_id: pico_w_hyago_santos_temperatura
+    state_topic: "ha/desafio07/hyago.santos/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+    
+ ################################################################################   
+################################################################################
+
+# --- Sensores numéricos (aceleração, giroscópio, temperatura) ---
+#---------------------------------------------------------------------
+# Dispositivo: MPU-6050 - bitdoglab01_Wiliane.Lima
+# Adicionado em: 07/09/2025
+#---------------------------------------------------------------------
+  # Sensor de Temperatura
+  - name: "Temperatura MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_temp"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+      name: "MPU-6050 BitDogLab Wiliane"
+      manufacturer: "Desafio 18"
+      model: "MPU-6050"
+
+  # Sensores de Aceleração
+  - name: "Aceleração Eixo X MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_x"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-x-arrow
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+
+  - name: "Aceleração Eixo Y MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_y"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-y-arrow
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+
+  - name: "Aceleração Eixo Z MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_z"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-z-arrow
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+
+  # Sensores de Giroscópio
+  - name: "Giroscópio Eixo X MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_x"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+
+  - name: "Giroscópio Eixo Y MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_y"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+
+  - name: "Giroscópio Eixo Z MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_z"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+    device:
+      identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+############################# Marcos F Silva ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "Marcos F Silva Acelerômetro X"
+    unique_id: pico_w_marcos_silva_accel_x
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Marcos F Silva Acelerômetro Y"
+    unique_id: pico_w_marcos_silva_accel_y
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Marcos F Silva Acelerômetro Z"
+    unique_id: pico_w_marcos_silva_accel_z
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "Marcos F Silva Giroscópio X"
+    unique_id: pico_w_marcos_silva_gyro_x
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Marcos F Silva Giroscópio Y"
+    unique_id: pico_w_marcos_silva_gyro_y
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Marcos F Silva Giroscópio Z"
+    unique_id: pico_w_marcos_silva_gyro_z
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "Marcos F Silva Temperatura MPU6050"
+    unique_id: pico_w_marcos_silva_temperatura
+    state_topic: "ha/desafio06/marcos.silva/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+    # --- Sensor de Timestamp ---
+  - name: "Marcos F Silva Ultima Leitura"
+    unique_id: pico_w_marcos_silva_timestamp
+    state_topic: "ha/desafio06/marcos.silva/mpu6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+################################################################################
+################################################################################
+################# ALESANGELA BEZERRA DA FONSECA - DESAFIO 20 ##################
+################################################################################
+  - name: "Alesangela Acelerometro X"
+    unique_id: "alesangela_fonseca_accel_x"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-x-arrow"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+      name: "BitDogLab MPU-6050 (Alesangela Fonseca)"
+      model: "BitDogLab com MPU-6050"
+      manufacturer: "Desafio 20"
+
+  - name: "Alesangela Acelerometro Y"
+    unique_id: "alesangela_fonseca_accel_y"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-y-arrow"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+
+  - name: "Alesangela Acelerometro Z"
+    unique_id: "alesangela_fonseca_accel_z"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-z-arrow"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+
+  - name: "Alesangela Giroscopio X"
+    unique_id: "alesangela_fonseca_gyro_x"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+
+  - name: "Alesangela Giroscopio Y"
+    unique_id: "alesangela_fonseca_gyro_y"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+
+  - name: "Alesangela Giroscopio Z"
+    unique_id: "alesangela_fonseca_gyro_z"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+
+  - name: "Alesangela Temperatura"
+    unique_id: "alesangela_fonseca_temp"
+    state_topic: "ha/desafio20/alesangela.fonseca/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    unit_of_measurement: "°C"
+    device_class: "temperature" # Este é válido, por isso mantemos
+    state_class: "measurement"
+    device:
+      identifiers: ["bitdoglab_alesangela_fonseca"]
+      
+############################# Samara ####################################
+########################### DESAFIO 08 ##################################
+  # --- Acelerômetro ---
+  - name: "samara Acelerômetro X"
+    unique_id: esp32_samara_accel_x
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-x-arrow
+
+  - name: "samara Acelerômetro Y"
+    unique_id: esp32_samara_accel_y
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-y-arrow
+
+  - name: "samara Acelerômetro Z"
+    unique_id: esp32_samara_accel_z
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "g"
+    icon: mdi:axis-z-arrow
+
+  # --- Giroscópio ---
+  - name: "samara Giroscópio X"
+    unique_id: esp32_samara_gyro_x
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "samara Giroscópio Y"
+    unique_id: esp32_samara_gyro_y
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "samara Giroscópio Z"
+    unique_id: esp32_samara_gyro_z
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+  # --- Temperatura ---
+  - name: "samara Temperatura MPU6050"
+    unique_id: esp32_samara_temperatura
+    state_topic: "ha/desafio08/samara.silva/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+    
+    ################################################################################
+    
+    ###################### Jairo da Silva Sobrinho Junior ############################
+    # --- Temperatura ---
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+    # --- Acelerômetro ---
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+    # --- Giroscópio ---
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/jairo.junior/mpu6050"
+    name: "JairoJ Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+    ########################## Lucas Vinícius Teixeira de Góis ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/lucas.gois/mpu6050"
+    name: "LucasG Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+    ############################# Ewerton Lopes ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    name: "Ewerton MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - name: "Ewerton Timestamp"
+    unique_id: ewerton_lopes_pico_timestamp
+    state_topic: "ha/desafio04/ewerton.lopes/mpu6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+    
+################# Anderson #####################################################
+
+# --- Sensores do Acelerômetro ---
+  - name: "Anderson Acelerômetro X"
+    unique_id: pico_w_anderson_accel_x
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "g"
+    state_class: measurement
+    icon: mdi:axis-x-arrow
+
+  - name: "Anderson Acelerômetro Y"
+    unique_id: pico_w_anderson_accel_y
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "g"
+    state_class: measurement
+    icon: mdi:axis-y-arrow
+
+  - name: "Anderson Acelerômetro Z"
+    unique_id: pico_w_anderson_accel_z
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "g"
+    state_class: measurement
+    icon: mdi:axis-z-arrow
+
+# --- Sensores do Giroscópio ---
+  - name: "Anderson Giroscópio X"
+    unique_id: pico_w_anderson_gyro_x
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    state_class: measurement
+    icon: mdi:rotate-3d-variant
+
+  - name: "Anderson Giroscópio Y"
+    unique_id: pico_w_anderson_gyro_y
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    state_class: measurement
+    icon: mdi:rotate-3d-variant
+
+  - name: "Anderson Giroscópio Z"
+    unique_id: pico_w_anderson_gyro_z
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    state_class: measurement
+    icon: mdi:rotate-3d-variant
+
+# --- Sensor de Temperatura ---
+  - name: "Anderson Temperatura"
+    unique_id: pico_w_anderson_temp
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    unit_of_measurement: "°C"
+    state_class: measurement
+    device_class: temperature
+    icon: mdi:thermometer
+
+# --- Sensor de Timestamp ---
+  - name: "Anderson Ultima Leitura"
+    unique_id: pico_w_anderson_timestamp
+    state_topic: "ha/desafio20/anderson.dantas/mpu6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+
+
+########################### Bruno Silva ################################
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Accel X"
+    unit_of_measurement: "m/s²"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Accel Y"
+    unit_of_measurement: "m/s²"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Accel Z"
+    unit_of_measurement: "m/s²"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/bruno.silva/mpu6050"
+    name: "Bruno MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+########################## Thayná Bittencourt ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio14/thayna.bittencourt/mpu6050"
+    name: "ThaynáB Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+
+
+
+############################ Matheus Dionisio ##################################
+  - state_class: measurement
+    state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Temp MPU"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:temperature-celsius
+    
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+    
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. IP"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+    
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Sensor"
+    value_template: "{{ value_json.sensor }}"
+    
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Giroscópio X"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:rotate-orbit
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Giroscópio Y"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:rotate-orbit
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Giroscópio Z"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:rotate-orbit
+    
+    
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Acelerômetro X"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Acelerômetro Y"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+  - state_topic: "ha/desafio03/matheus.dionisio/mpu6050"
+    name: "Matheus D. Acelerômetro Z"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+
+################################################################################
+############################# Yuri Cavalcanti #################################  
+  - state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Acelerômetro X"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Acelerômetro Y"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Acelerômetro Z"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Giroscopio X"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Giroscopio Y"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio09/yuri.aquino/mpu"
+    name: "Yuri Giroscopio Z"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+################################################################################
+###############################  Lielson Andrade  ##############################
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Accel X"
+    unique_id: "lielson_andrade_accel_x"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Accel Y"
+    unique_id: "lielson_andrade_accel_y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Accel Z"
+    unique_id: "lielson_andrade_accel_z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Gyro X"
+    unique_id: "lielson_andrade_gyro_x"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Gyro Y"
+    unique_id: "lielson_andrade_gyro_y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson MPU Gyro Z"
+    unique_id: "lielson_andrade_gyro_z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio11/lielson.andrade/mpu6050"
+    name: "Lielson Temperature C"
+    unique_id: "lielson_andrade_temperature"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+    
+############################# Joao Vieira ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio09/joao.vieira/mpu6050"
+    name: "Joao Vieira C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+
+
+############################# Guilherme Aurélio	####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Accel X)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Accel Y)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Accel Z)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Gyro X)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Gyro Y)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Gyro Z)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio13/guilherme.aurelio/mpu6050"
+    name: "Guilherme (Temperature)"
+    unit_of_measurement: "°C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+
+################################################################################
+
+############################## João Roberto #####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Accel X)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.d.a.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Accel Y)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.d.a.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Accel Z)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.d.a.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Gyro X)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.d.g.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Gyro Y)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.d.g.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto (Gyro Z)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.d.g.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - name: "João Roberto Timestamp"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    value_template: "{{ value_json.tt }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/joao.camboim/mpu6050"
+    name: "João Roberto Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.d.t}}"
+    icon: mdi:temperature-celsius
+
+################################################################################
+
+############################## Hilquias Silva #####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Accel X)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Accel Y)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Accel Z)"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Gyro X)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Gyro Y)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio04/hilquias.silva/mpu6050"
+    name: "Hilquias (Gyro Z)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+################################################################################
+
+############################## Márcio Douglas #####################################
+################################################################################### 
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Accel X)"
+    unit_of_measurement: "G"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Accel Y)"
+    unit_of_measurement: "G"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Accel Z)"
+    unit_of_measurement: "G"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Gyro X)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Gyro Y)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    name: "Márcio (Gyro Z)"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio06/marcio.xavier/mpu6050"
+    unique_id: pico_w_marcio_xavier_temperatura
+    name: "Márcio Temperatura"
+    unit_of_measurement: "°C"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    icon: mdi:thermometer
+    
+
+################################################################################
+
+######################## Rafael Martins #######################################
+###############################################################################
+
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Acelerômetro X)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Acelerômetro Y)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Acelerômetro Z)"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Giroscópo X)"
+    unit_of_measurement: " °"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Giroscópo Y)"
+    unit_of_measurement: " °"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Giroscópo Z)"
+    unit_of_measurement: " °"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Temperatura MPU)"
+    unit_of_measurement: " °C"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:temperature-celsius
+
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Sensor)"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:chip
+    
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Rede)"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - state_topic: "ha/desafio03/rafael.martins/mpu6050"
+    name: "Rafael Martins (Ip)"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip-network
+    
+################################################################################
+
+
+########################## Mozart Maia ##################################
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio05/mozart.maia/mpu6050"
+    name: "Mozart M Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+  ################################################################################
+
+  ############################# joao lucas ####################################
+  # --- Sensores do Acelerômetro ---
+  - name: "joao lucas Acelerômetro X"
+    unique_id: pico_w_joao_lucas_accel_x
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "joao lucas Acelerômetro Y"
+    unique_id: pico_w_joao_lucas_accel_y
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "joao lucas Acelerômetro Z"
+    unique_id: pico_w_joao_lucas_accel_z
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "joao lucas Giroscópio X"
+    unique_id: pico_w_joao_lucas_gyro_x
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "joao lucas Giroscópio Y"
+    unique_id: pico_w_joao_lucas_gyro_y
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "joao lucas Giroscópio Z"
+    unique_id: pico_w_joao_lucas_gyro_z
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "joao lucas Temperatura MPU6050"
+    unique_id: pico_w_joao_lucas_temperatura
+    state_topic: "ha/desafio07/joao.lucas/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+  
+  ############################# Ian Périgo ####################################
+  # --- Sensores do Acelerômetro ---
+  - name: "Ian Périgo X"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Ian Périgo Y"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Ian Périgo Z"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "Ian Périgo Giroscópio X"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Ian Périgo Giroscópio Y"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Ian Périgo Giroscópio Z"
+    unique_id: pico_w_joao_lucas_gyro_z
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "Ian Périgo Temperatura MPU6050"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+  - name: "Ian Périgo Timestamp"
+    state_topic: "ha/desafio12/ian.perigo/MPU6050"
+    value_template: "{{ value_json.timestamp }}"
+    device_class: timestamp
+    icon: mdi:clock-check-outline
+  
+  
+
+
+    
+################################################################################
+############################# Marcelo Junior ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "Marcelo Acelerômetro X"
+    unique_id: pico_w_Marcelo_accel_x
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "Marcelo Acelerômetro Y"
+    unique_id: pico_w_Marcelo_accel_y
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "Marcelo Acelerômetro Z"
+    unique_id: pico_w_Marcelo_accel_z
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "Marcelo Giroscópio X"
+    unique_id: pico_w_Marcelo_gyro_x
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Marcelo Giroscópio Y"
+    unique_id: pico_w_Marcelo_gyro_y
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Marcelo Giroscópio Z"
+    unique_id: pico_w_Marcelo_gyro_z
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "Marcelo Temperatura MPU6050"
+    unique_id: pico_w_Marcelo_temperatura
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+  - name: "Marcelo Inclinação X (Pitch)"
+    unique_id: pico_w_Marcelo_pitch
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    # Calcula o ângulo de inclinação em graus usando os dados do acelerômetro
+    value_template: >
+      {{ (atan2(value_json.data.accel.y, sqrt(value_json.data.accel.x**2 + value_json.data.accel.z**2)) * 180 / 3.14159) | round(1) }}
+    state_class: measurement
+    unit_of_measurement: "°"
+    icon: mdi:angle-acute
+
+  - name: "Marcelo Inclinação Y (Roll)"
+    unique_id: pico_w_Marcelo_roll
+    state_topic: "ha/desafio18/marcelo.junior/mpu6050"
+    # Calcula o ângulo de rotação em graus usando os dados do acelerômetro
+    value_template: >
+      {{ (atan2(-1 * value_json.data.accel.x, value_json.data.accel.z) * 180 / 3.14159) | round(1) }}
+    state_class: measurement
+    unit_of_measurement: "°"
+    icon: mdi:angle-acute
+    
+################################################################################
+############################# Pablo Emanuell ###################################
+  - name: "Pablo E L Targino - Equipe"
+    unique_id: pabloelt.info.team
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.team }}"
+    icon: mdi:account-group
+
+  - name: "Pablo E L Targino - Dispositivo"
+    unique_id: pabloelt.info.device
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:devices
+
+  - name: "Pablo E L Targino - SSID"
+    unique_id: pabloelt.info.ssid
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - name: "Pablo E L Targino - IP"
+    unique_id: pabloelt.info.ip
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip
+
+  - name: "Pablo E L Targino - Sensor"
+    unique_id: pabloelt.info.sensor
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:square-wave
+
+  - name: "Pablo E L Targino - última atualização"
+    unique_id: pabloelt.info.timestamp
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ strptime(value_json.timestamp, '%Y-%m-%dT%H:%M:%S').strftime('%d/%m/%Y %H:%Mh') }}"
+    icon: mdi:clock-time-eight-outline
+
+  - name: "Pablo E L Targino - Acel X"
+    unique_id: pabloelt.data.accel.x
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    state_class: measurement
+    unit_of_measurement: "m/s²"
+  
+  - name: "Pablo E L Targino - Acel Y"
+    unique_id: pabloelt.data.accel.y
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    state_class: measurement
+    unit_of_measurement: "m/s²"
+  
+  - name: "Pablo E L Targino - Acel Z"
+    unique_id: pabloelt.data.accel.z
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    state_class: measurement
+    unit_of_measurement: "m/s²"
+
+  - name: "Pablo E L Targino - Temperatura"
+    unique_id: pabloelt.data.temperature
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    icon: mdi:temperature-celsius
+    state_class: measurement
+    unit_of_measurement: "°"
+
+  - name: "Pablo E L Targino - Giro x"
+    unique_id: pabloelt.data.gyro.x
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    state_class: measurement
+    unit_of_measurement: "°/s"
+
+  - name: "Pablo E L Targino - Giro y"
+    unique_id: pabloelt.data.gyro.y
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    state_class: measurement
+    unit_of_measurement: "°/s"
+
+  - name: "Pablo E L Targino - Giro z"
+    unique_id: pabloelt.data.gyro.z
+    state_topic: "ha/desafio18/pablo.targino/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    state_class: measurement
+    unit_of_measurement: "°/s"
+
+################################################################################
+############################# Willianne Lima ###################################
+
+  - name: "Temperatura MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_temp"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    device:
+        identifiers: "bitdoglab01_Wiliane.Lima_mpu6050"
+        name: "MPU-6050 BitDogLab Wiliane"
+        manufacturer: "Desafio 18"
+        model: "MPU-6050"
+
+  # Sensores de Aceleração
+  - name: "Aceleração Eixo X MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_x"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-x-arrow
+
+  - name: "Aceleração Eixo Y MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_y"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-y-arrow
+
+  - name: "Aceleração Eixo Z MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_accel_z"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "m/s²"
+    icon: mdi:axis-z-arrow
+
+  # Sensores de Giroscópio
+  - name: "Giroscópio Eixo X MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_x"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "Giroscópio Eixo Y MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_y"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "Giroscópio Eixo Z MPU-6050"
+    unique_id: "bitdoglab01_Wiliane_Lima_gyro_z"
+    state_topic: "desafio18/device/bitdoglab01_Wiliane.Lima/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+
+################################################################################
+############################ Artemisia Silva ###################################
+################################################################################
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU ACCEL X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU ACCEL Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU ACCEL Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU GYRO X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU GYRO Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU GYRO Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:rotate-3d-variant
+
+  - state_class: measurement
+    state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia MPU TEMPERATURA"
+    unit_of_measurement: "°C"
+    device_class: temperature
+    value_template: "{{ value_json.data.temperature }}"
+
+  - state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia DEVICE STATUS"
+    value_template: "{{ value_json.device }}"
+    icon: mdi:chip
+
+  - state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia WIFI SSID"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia SENSOR TYPE"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:motion-sensor
+
+  - state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia TEAM"
+    value_template: "{{ value_json.team }}"
+    icon: mdi:account-group
+
+  - state_topic: "ha/desafio04/artemisia.silva/mpu6050"
+    name: "Artemisia TIMESTAMP"
+    value_template: "{{ value_json.timestamp }}"
+    icon: mdi:clock-outline
+
+################################################################################
+################################################################################
+########################## Joanderson Linhares ##################################
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Temperatura"
+    unit_of_measurement: "ºC"
+    value_template: "{{ value_json.data.mpu_temp }}"
+    icon: mdi:thermometer
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Aceleração X"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.x }}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Aceleração Y"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.y }}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Aceleração Z"
+    unit_of_measurement: "g"
+    value_template: "{{ value_json.data.accel.z }}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Giroscópio X"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.x }}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Giroscópio Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.y }}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_topic: "ha/desafio01/joanderson.linhares/mpu6050"
+    name: "Joanderson Giroscópio Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{ value_json.data.gyro.z }}"
+    icon: mdi:axis-z-rotate-clockwise
+    
+    
+    
+
+
+    
+############################################################
+
+ ############################# Joao Paulino ####################################
+    # --- Sensores do Acelerômetro ---
+  - name: "João Paulino Acelerômetro X"
+    unique_id: pico_w_joao_paulino_accel_x
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-x-arrow
+
+  - name: "João Paulino Acelerômetro Y"
+    unique_id: pico_w_joao_paulino_accel_y
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-y-arrow
+
+  - name: "João Paulino Acelerômetro Z"
+    unique_id: pico_w_joao_paulino_accel_z
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    state_class: measurement
+    unit_of_measurement: "G"
+    icon: mdi:axis-z-arrow
+
+    # --- Sensores do Giroscópio ---
+  - name: "João Paulino Giroscópio X"
+    unique_id: pico_w_joao_paulino_gyro_x
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-x-rotate-clockwise
+
+  - name: "João Paulino Giroscópio Y"
+    unique_id: pico_w_joao_paulino_gyro_y
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-y-rotate-clockwise
+
+  - name: "João Paulino Giroscópio Z"
+    unique_id: pico_w_joao_paulino_gyro_z
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    state_class: measurement
+    unit_of_measurement: "°/s"
+    icon: mdi:axis-z-rotate-clockwise
+
+    # --- Sensor de Temperatura ---
+  - name: "João Paulino Temperatura MPU6050"
+    unique_id: pico_w_joao_paulino_temperatura
+    state_topic: "ha/desafio06/joao.paulino/MPU6050"
+    value_template: "{{ value_json.data.temperature }}"
+    device_class: temperature
+    state_class: measurement
+    unit_of_measurement: "°C"
+    icon: mdi:thermometer
+    
+    
+ ################################################################################ 
+
+################################################################################
+################# ELDIO LUIZ CORTEZ NETO - DESAFIO 20 ##################
+################################################################################
+  - name: "Eldio Acelerometro X"
+    unique_id: "eldio_neto_accel_x"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.accel.x }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-x-arrow"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+      name: "BitDogLab MPU-6050 (Eldio Neto)"
+      model: "BitDogLab com MPU-6050"
+      manufacturer: "Desafio 20"
+
+  - name: "Eldio Acelerometro Y"
+    unique_id: "eldio_neto_accel_y"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.accel.y }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-y-arrow"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+  - name: "Eldio Acelerometro Z"
+    unique_id: "eldio_neto_accel_z"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.accel.z }}"
+    unit_of_measurement: "g"
+    state_class: "measurement"
+    icon: "mdi:axis-z-arrow"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+  - name: "Eldio Giroscopio X"
+    unique_id: "eldio_neto_gyro_x"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.gyro.x }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+  - name: "Eldio Giroscopio Y"
+    unique_id: "eldio_neto_gyro_y"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.gyro.y }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+  - name: "Eldio Giroscopio Z"
+    unique_id: "eldio_neto_gyro_z"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.gyro.z }}"
+    unit_of_measurement: "°/s"
+    state_class: "measurement"
+    icon: "mdi:rotate-3d-variant"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+  - name: "Eldio Temperatura"
+    unique_id: "eldio_neto_temp"
+    state_topic: "ha/desafio20/eldio.neto/mpu6050"
+    value_template: "{{ value_json.data.temperature }}"
+    unit_of_measurement: "°C"
+    device_class: "temperature"
+    state_class: "measurement"
+    device:
+      identifiers: ["bitdoglab04_eldio_neto"]
+
+############################# Jose Lucas ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio02/jose.gomes/mpu6050"
+    name: "Jose Lucas MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+############################# Rafael Cosme ####################################
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Accel X"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Accel Y"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Accel Z"
+    unit_of_measurement: "g"
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Gyro X"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Gyro Y"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme MPU Gyro Z"
+    unit_of_measurement: "°/s"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+  - state_class: "measurement"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    name: "Rafael Cosme Temperature C"
+    unit_of_measurement: "C"
+    value_template: "{{value_json.data.temperature}}"
+    icon: mdi:temperature-celsius
+
+  - name: "Rafael Cosme Sensor"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    value_template: "{{ value_json.sensor }}"
+    icon: mdi:devices
+
+  - name: "Rafael Cosme SSID"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    value_template: "{{ value_json.ssid }}"
+    icon: mdi:wifi
+
+  - name: "Rafael Cosme IP"
+    state_topic: "ha/desafio03/rafael.cosme/mpu6050"
+    value_template: "{{ value_json.ip }}"
+    icon: mdi:ip
+
+############################################################
+
+############################# Samuel Farias #################################  
+  - state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Acelerômetro X"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.x}}"
+    icon: mdi:axis-x-arrow
+    
+  - state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Acelerômetro Y"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.y}}"
+    icon: mdi:axis-y-arrow
+    
+  - state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Acelerômetro Z"
+    state_class: measurement
+    value_template: "{{value_json.data.accel.z}}"
+    icon: mdi:axis-z-arrow
+    
+  - state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Giroscopio X"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.x}}"
+    icon: mdi:axis-x-rotate-clockwise
+    
+  - state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Giroscopio Y"
+    state_class: measurement
+    value_template: "{{value_json.data.gyro.y}}"
+    icon: mdi:axis-y-rotate-clockwise
+    
+  - state_class: measurement
+    state_topic: "ha/desafio11/samuel.farias/mpu"
+    name: "samuel Giroscopio Z"
+    value_template: "{{value_json.data.gyro.z}}"
+    icon: mdi:axis-z-rotate-clockwise
+
+################################################################################
+
+#           TIPO SWITCH
+################################################################################
+switch:
+################################################################################
+
+############################# Fabricio Silva ####################################
+  - name: "Pico W LED Fabricio"
+    unique_id: pico_w_led_fabricio_switch
+    command_topic: "ha/desafio15/fabricio.silva/set"
+    payload_on: "ON"
+    payload_off: "OFF"
+    optimistic: true
+    icon: mdi:led-on
+
+################################################################################
+
+
+
+#           TIPO Binary Sensor
+################################################################################
+binary_sensor:
+  - name: "Fabricio Em Movimento"
+    unique_id: pico_w_fabricio_em_movimento
+    state_topic: "ha/desafio15/fabricio.silva/mpu6050"
+    # Retorna 'ON' se qualquer eixo do giroscópio ultrapassar um limite, senão 'OFF'
+    # Ajuste o valor '20' para alterar a sensibilidade
+    value_template: >
+      {% set threshold = 20 %}
+      {% if value_json.data.gyro.x|abs > threshold or value_json.data.gyro.y|abs > threshold or value_json.data.gyro.z|abs > threshold %}
+        ON
+      {% else %}
+        OFF
+      {% endif %}
+    device_class: motion # Isso faz com que ele se comporte como um sensor de movimento
+
+
+

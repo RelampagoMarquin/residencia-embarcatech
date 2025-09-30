@@ -1,0 +1,19 @@
+FROM debian:bullseye-slim
+
+# Instala Mosquitto, clientes, SSH, sudo e nano
+RUN apt-get update && \
+    apt-get install -y mosquitto mosquitto-clients openssh-server sudo nano && \
+    rm -rf /var/lib/apt/lists/*
+
+# Prepara SSH
+RUN mkdir -p /var/run/sshd
+
+# Copia o script de inicialização
+COPY start.sh /start.sh
+RUN chmod +x /start.sh
+
+# Expondo as portas internas com sua matrícula (49)
+EXPOSE 2249 1849 8849
+
+# Entrypoint: sobe ssh e deixa mosquitto como PID 1
+CMD ["/bin/bash", "-c", "/start.sh && sleep infinity"]

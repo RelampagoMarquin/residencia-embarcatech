@@ -1,0 +1,3 @@
+/config/psk.txt
+#Trocar $USER pelo usuário correspondente
+aluno49:ABCD49EF1234
